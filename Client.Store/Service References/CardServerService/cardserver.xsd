@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://service.cardserver.pa.krumholt.fh.trier.de/" targetNamespace="http://service.cardserver.pa.krumholt.fh.trier.de/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="CreateAccount" type="tns:CreateAccount" />
+  <xs:element name="CreateAccountResponse" type="tns:CreateAccountResponse" />
+  <xs:element name="DeleteAccount" type="tns:DeleteAccount" />
+  <xs:element name="DeleteAccountResponse" type="tns:DeleteAccountResponse" />
+  <xs:element name="GetAlias" type="tns:GetAlias" />
+  <xs:element name="GetAliasResponse" type="tns:GetAliasResponse" />
+  <xs:element name="GetCard" type="tns:GetCard" />
+  <xs:element name="GetCardData" type="tns:GetCardData" />
+  <xs:element name="GetCardDataResponse" type="tns:GetCardDataResponse" />
+  <xs:element name="GetCardResponse" type="tns:GetCardResponse" />
+  <xs:element name="GetServerCertificate" type="tns:GetServerCertificate" />
+  <xs:element name="GetServerCertificateResponse" type="tns:GetServerCertificateResponse" />
+  <xs:element name="GetUserCertificate" type="tns:GetUserCertificate" />
+  <xs:element name="GetUserCertificateResponse" type="tns:GetUserCertificateResponse" />
+  <xs:element name="GetUserId" type="tns:GetUserId" />
+  <xs:element name="GetUserIdResponse" type="tns:GetUserIdResponse" />
+  <xs:complexType name="GetCardData">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="GetCardDataResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:cardData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cardData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardDataId" type="tns:cardDataId" />
+      <xs:element name="Values">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="xs:string" />
+                  <xs:element minOccurs="0" name="value" type="xs:string" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cardDataId">
+    <xs:sequence>
+      <xs:element name="Edition" type="xs:int" />
+      <xs:element name="Number" type="xs:int" />
+      <xs:element name="Revision" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DeleteAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:credentials" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="credentials">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DeleteAccountResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="GetAlias">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetAliasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="email" type="xs:string" />
+      <xs:element minOccurs="0" name="passwordHash" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateAccountResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetUserId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:credentials" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetUserIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetServerCertificate">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="GetServerCertificateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:certificate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="certificate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CertificateId" type="xs:string" />
+      <xs:element minOccurs="0" name="Signature" type="tns:signature" />
+      <xs:element minOccurs="0" name="PublicKey" type="tns:key" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="signature">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SigneeId" type="xs:string" />
+      <xs:element minOccurs="0" name="Signature" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="key">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Modulus" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="Exponent" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetUserCertificate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:credentials" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetUserCertificateResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:certificate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetCard">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="GetCardResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:card" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="card">
+    <xs:sequence>
+      <xs:element name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="CardDataId" type="tns:cardDataId" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

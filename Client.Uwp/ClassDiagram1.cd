@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Client.Viewmodel.Game.GameViewmodel">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AFAUCEgmDAQAShlggABAAFBIBMEgBAEgBAAEAgckgBA=</HashCode>
+      <FileName>C:\Users\patri\Source\Repos\Projektarbeit2013\Projektarbeit\Client\Client.Shared\Viewmodel\Game\GameViewmodel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="PlayerActions" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Client.Viewmodel.Game.CardViewmodel">
+    <Position X="8.25" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AiBAACAAAgAAACAIAAAAAIAAAABBAAgAAMCAAAAAYAE=</HashCode>
+      <FileName>C:\Users\patri\Source\Repos\Projektarbeit2013\Projektarbeit\Client\Client.Shared\Viewmodel\Game\CardViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Client.Viewmodel.Game.RegionViewmodel" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEgABAAAAAAAAAAAACAAAAAAAAAAAQAAAEA=</HashCode>
+      <FileName>C:\Users\patri\Source\Repos\Projektarbeit2013\Projektarbeit\Client\Client.Shared\Viewmodel\Game\RegionViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Client.Game.Engine.PlayerMove.PlayerAction">
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\patri\Source\Repos\Projektarbeit2013\Projektarbeit\Client\Client.Shared\Game\Engine\PlayerMove\PlayerAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Client.Game.Engine.PlayerMove.AbstractAction">
+    <Position X="5.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAgAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\patri\Source\Repos\Projektarbeit2013\Projektarbeit\Client\Client.Shared\Game\Engine\PlayerMove\AbstractAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

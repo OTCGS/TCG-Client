@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://krumholz.info/tcgservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://krumholz.info/tcgservice" targetNamespace="http://krumholz.info/tcgservice">
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://krumholz.info/tcgservice">
+
+	<!-- Transactions -->
+	<xs:element name="submitTransactionsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" name="transaction" type="tns:transaction"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="submitTransactionsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="success" type="xs:boolean"/>
+				<xs:element name="errorMessage" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="registerRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="user" type="tns:key"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="registerResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" name="users" type="tns:key"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="broadcastMessageRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="relayMessage" type="tns:relayMessage"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="broadcastMessageResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="relayMessageRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="relayMessage" type="tns:relayMessage"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="relayMessageResponse">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getRelayMessageRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="for" type="tns:key"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getRelayMessageResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" name="relayMessage" type="tns:relayMessage"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getHeadsRequest">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getHeadsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" name="transactions" type="tns:transaction"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getTransactionRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="hash" type="xs:base64Binary"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getTransactionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" name="transaction" type="tns:transaction"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Server Information -->
+
+	<xs:element name="ServerIdentityRequest">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="ServerIdentityResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="identity" type="tns:serverIdentity"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Data retrieval -->
+
+	<xs:element name="listCardDataRequest">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="listCardDataResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="uuids">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" name="uuid" type="tns:uuid"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getCardDataRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cardDataId" type="tns:uuid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getCardDataResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cardData" type="tns:cardData"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getCardInstanceRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cardInstanceId" type="tns:uuid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getCardInstanceResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="cardInstance" type="tns:cardInstance"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getImageDataRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="imageId" type="tns:uuid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getImageDataResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="imageData" type="tns:imageData"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="createCardInstanceRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ownerKey" type="tns:key"/>
+				<xs:element name="cardDataId" type="tns:uuid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="createCardInstanceResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="transactions">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" name="transaction" type="tns:transaction"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="listRuleSetRequest">
+		<xs:complexType>
+			<xs:sequence/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="listRuleSetResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="uuids">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" name="uuid" type="tns:uuid"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getRuleSetRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="tns:uuid"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getRuleSetResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ruleSet" type="tns:ruleSet"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="createBoosterRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ownerKey" type="tns:key"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="createBoosterResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="transactions">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" name="transaction" type="tns:transaction"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Types -->
+
+	<xs:complexType name="credentials">
+		<xs:sequence>
+			<xs:element maxOccurs="1" name="email" type="xs:string"/>
+			<xs:element maxOccurs="1" name="password" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="cardInstance">
+		<xs:sequence>
+			<xs:element name="id" type="tns:uuid"/>
+			<xs:element name="cardDataId" type="tns:uuid"/>
+			<xs:element name="creator" type="tns:key"/>
+			<xs:element name="signature" type="xs:base64Binary"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ruleSet">
+		<xs:sequence>
+			<xs:element name="id" type="tns:uuid"/>
+			<xs:element name="creator" type="tns:key"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="revision" type="xs:int"/>
+			<xs:element name="script" type="xs:string"/>
+			<xs:element name="mandatoryKeys">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" name="key">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="name" type="xs:string"/>
+									<xs:element name="valueType" type="xs:string"/>
+									<!-- value types: int, string, script, -->
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="signature" type="xs:base64Binary"/>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="cardData">
+		<xs:sequence>
+			<xs:element name="id" type="tns:uuid"/>
+			<xs:element name="creator" type="tns:key"/>
+			<xs:element name="edition" type="xs:string"/>
+			<xs:element name="cardRevision" type="xs:int"/>
+			<xs:element name="imageId" type="tns:uuid"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="values">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" name="keyValue">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="key" type="xs:string"/>
+									<xs:element name="type" type="xs:string"/>
+									<xs:element name="value" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="signature" type="xs:base64Binary"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="imageData">
+		<xs:sequence>
+			<xs:element name="id" type="tns:uuid"/>
+			<xs:element name="image" type="xs:base64Binary"/>
+			<xs:element name="creator" type="tns:key"/>
+			<xs:element name="signature" type="xs:base64Binary"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="transaction">
+		<xs:sequence>
+			<xs:element name="a" type="tns:key"/>
+			<xs:element name="b" type="tns:key"/>
+			<xs:element name="signatureA" type="xs:base64Binary"/>
+			<xs:element name="signatureB" type="xs:base64Binary"/>
+			<xs:element name="transfers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element maxOccurs="unbounded" name="transfer" type="tns:transfer"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="transfer">
+		<xs:sequence>
+			<xs:element name="giver" type="tns:key"/>
+			<xs:element name="recipient" type="tns:key"/>
+			<xs:element name="cardId" type="xs:string"/>
+			<xs:element name="creator" type="tns:key"/>
+			<xs:element name="cardTransferIndex" type="xs:int"/>
+			<xs:element name="previousTransactionHash" type="xs:base64Binary"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="key">
+		<xs:sequence>
+			<xs:element name="modulus" type="xs:base64Binary"/>
+			<xs:element name="exponent" type="xs:base64Binary"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="serverIdentity">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="key" type="tns:key"/>
+			<xs:element name="icon" type="tns:uuid"/>
+			<xs:element name="uri" type="xs:string"/>
+			<xs:element name="revision" type="xs:int"/>
+			<xs:element name="signature" type="xs:base64Binary"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="relayMessage">
+		<xs:sequence>
+			<xs:element name="from" type="tns:key"/>
+			<xs:element name="to" type="tns:key"/>
+			<xs:element name="data" type="xs:base64Binary"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="uuid">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="player">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="none"/>
+			<xs:enumeration value="player1"/>
+			<xs:enumeration value="player2"/>
+			<xs:enumeration value="any"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="displayType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="hand"/>
+			<xs:enumeration value="stack"/>
+			<xs:enumeration value="row"/>
+			<xs:enumeration value="column"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getTransactionRequest">
+    <wsdl:part element="tns:getTransactionRequest" name="getTransactionRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitTransactionsRequest">
+    <wsdl:part element="tns:submitTransactionsRequest" name="submitTransactionsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRelayMessageResponse">
+    <wsdl:part element="tns:getRelayMessageResponse" name="getRelayMessageResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listCardDataRequest">
+    <wsdl:part element="tns:listCardDataRequest" name="listCardDataRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRuleSetRequest">
+    <wsdl:part element="tns:getRuleSetRequest" name="getRuleSetRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getTransactionResponse">
+    <wsdl:part element="tns:getTransactionResponse" name="getTransactionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="relayMessageRequest">
+    <wsdl:part element="tns:relayMessageRequest" name="relayMessageRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardDataResponse">
+    <wsdl:part element="tns:getCardDataResponse" name="getCardDataResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="relayMessageResponse">
+    <wsdl:part element="tns:relayMessageResponse" name="relayMessageResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listRuleSetRequest">
+    <wsdl:part element="tns:listRuleSetRequest" name="listRuleSetRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="broadcastMessageRequest">
+    <wsdl:part element="tns:broadcastMessageRequest" name="broadcastMessageRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCardInstanceResponse">
+    <wsdl:part element="tns:createCardInstanceResponse" name="createCardInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="broadcastMessageResponse">
+    <wsdl:part element="tns:broadcastMessageResponse" name="broadcastMessageResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listCardDataResponse">
+    <wsdl:part element="tns:listCardDataResponse" name="listCardDataResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardInstanceResponse">
+    <wsdl:part element="tns:getCardInstanceResponse" name="getCardInstanceResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ServerIdentityRequest">
+    <wsdl:part element="tns:ServerIdentityRequest" name="ServerIdentityRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRuleSetResponse">
+    <wsdl:part element="tns:getRuleSetResponse" name="getRuleSetResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerResponse">
+    <wsdl:part element="tns:registerResponse" name="registerResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerRequest">
+    <wsdl:part element="tns:registerRequest" name="registerRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ServerIdentityResponse">
+    <wsdl:part element="tns:ServerIdentityResponse" name="ServerIdentityResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="listRuleSetResponse">
+    <wsdl:part element="tns:listRuleSetResponse" name="listRuleSetResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getImageDataResponse">
+    <wsdl:part element="tns:getImageDataResponse" name="getImageDataResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getImageDataRequest">
+    <wsdl:part element="tns:getImageDataRequest" name="getImageDataRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHeadsRequest">
+    <wsdl:part element="tns:getHeadsRequest" name="getHeadsRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createBoosterRequest">
+    <wsdl:part element="tns:createBoosterRequest" name="createBoosterRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getHeadsResponse">
+    <wsdl:part element="tns:getHeadsResponse" name="getHeadsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createCardInstanceRequest">
+    <wsdl:part element="tns:createCardInstanceRequest" name="createCardInstanceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardInstanceRequest">
+    <wsdl:part element="tns:getCardInstanceRequest" name="getCardInstanceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="submitTransactionsResponse">
+    <wsdl:part element="tns:submitTransactionsResponse" name="submitTransactionsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getRelayMessageRequest">
+    <wsdl:part element="tns:getRelayMessageRequest" name="getRelayMessageRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardDataRequest">
+    <wsdl:part element="tns:getCardDataRequest" name="getCardDataRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createBoosterResponse">
+    <wsdl:part element="tns:createBoosterResponse" name="createBoosterResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ServicePort">
+    <wsdl:operation name="getTransaction">
+      <wsdl:input message="tns:getTransactionRequest" name="getTransactionRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getTransactionResponse" name="getTransactionResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitTransactions">
+      <wsdl:input message="tns:submitTransactionsRequest" name="submitTransactionsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:submitTransactionsResponse" name="submitTransactionsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRelayMessage">
+      <wsdl:input message="tns:getRelayMessageRequest" name="getRelayMessageRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getRelayMessageResponse" name="getRelayMessageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listCardData">
+      <wsdl:input message="tns:listCardDataRequest" name="listCardDataRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:listCardDataResponse" name="listCardDataResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRuleSet">
+      <wsdl:input message="tns:getRuleSetRequest" name="getRuleSetRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getRuleSetResponse" name="getRuleSetResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="relayMessage">
+      <wsdl:input message="tns:relayMessageRequest" name="relayMessageRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:relayMessageResponse" name="relayMessageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCardData">
+      <wsdl:input message="tns:getCardDataRequest" name="getCardDataRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getCardDataResponse" name="getCardDataResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRuleSet">
+      <wsdl:input message="tns:listRuleSetRequest" name="listRuleSetRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:listRuleSetResponse" name="listRuleSetResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="broadcastMessage">
+      <wsdl:input message="tns:broadcastMessageRequest" name="broadcastMessageRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:broadcastMessageResponse" name="broadcastMessageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCardInstance">
+      <wsdl:input message="tns:createCardInstanceRequest" name="createCardInstanceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:createCardInstanceResponse" name="createCardInstanceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCardInstance">
+      <wsdl:input message="tns:getCardInstanceRequest" name="getCardInstanceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getCardInstanceResponse" name="getCardInstanceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServerIdentity">
+      <wsdl:input message="tns:ServerIdentityRequest" name="ServerIdentityRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ServerIdentityResponse" name="ServerIdentityResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <wsdl:input message="tns:registerRequest" name="registerRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:registerResponse" name="registerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImageData">
+      <wsdl:input message="tns:getImageDataRequest" name="getImageDataRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getImageDataResponse" name="getImageDataResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHeads">
+      <wsdl:input message="tns:getHeadsRequest" name="getHeadsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:getHeadsResponse" name="getHeadsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createBooster">
+      <wsdl:input message="tns:createBoosterRequest" name="createBoosterRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:createBoosterResponse" name="createBoosterResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicePortSoap11" type="tns:ServicePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getTransaction">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getTransactionRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="submitTransactions">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="submitTransactionsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="submitTransactionsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRelayMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getRelayMessageRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRelayMessageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listCardData">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="listCardDataRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listCardDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRuleSet">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getRuleSetRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getRuleSetResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="relayMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="relayMessageRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="relayMessageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCardData">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCardDataRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCardDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listRuleSet">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="listRuleSetRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="listRuleSetResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="broadcastMessage">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="broadcastMessageRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="broadcastMessageResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCardInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="createCardInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createCardInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCardInstance">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getCardInstanceRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCardInstanceResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServerIdentity">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ServerIdentityRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ServerIdentityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="registerRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImageData">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getImageDataRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getImageDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHeads">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="getHeadsRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getHeadsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createBooster">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="createBoosterRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createBoosterResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="tcgservice">
+    <wsdl:port binding="tns:ServicePortSoap11" name="http">
+      <soap:address location="http://project-tcg.azurewebsites.net:80/ws"/>
+    </wsdl:port>
+    <wsdl:port binding="tns:ServicePortSoap11" name="https">
+      <soap:address location="https://project-tcg.azurewebsites.net:443/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

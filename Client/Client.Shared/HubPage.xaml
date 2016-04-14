@@ -1,0 +1,166 @@
+﻿<Page x:Class="Client.HubPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Controls="using:Client.Controls"
+      xmlns:common="using:Client.Common"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:Client"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      x:Name="pageRoot"
+      MinWidth="100"
+      DataContext="{Binding DefaultViewModel,
+                            RelativeSource={RelativeSource Self}}"
+      mc:Ignorable="d">
+
+    <!--  Dieser Raster fungiert als Stammbereich für die Seite.  -->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition IsStaggeringEnabled="True" />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Controls:StandardHeadder x:Name="Nav"
+                                  Title="TCG"
+                                  NavigationHelper="{Binding NavigationHelper,
+                                                             ElementName=root}" />
+
+        <ScrollViewer Grid.RowSpan="2">
+            <StackPanel>
+                <Rectangle Height="{Binding ElementName=Nav, Path=ActualHeight}" />
+
+                <Grid MaxWidth="500"
+                      Margin="0,0,0,0"
+                      HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+
+                    <Button Margin="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{ThemeResource SystemControlForegroundAccentBrush}"
+                            Click="LocalPlayClicked">
+
+                        <Border>
+                            <Grid>
+                                <Viewbox Margin="25,25,25,50">
+                                    <SymbolIcon Symbol="Street" />
+                                </Viewbox>
+                                <TextBlock Margin="3"
+                                           VerticalAlignment="Bottom"
+                                           Style="{ThemeResource SubheaderTextBlockStyle}"
+                                           Text="Local"
+                                           TextAlignment="Center" />
+                            </Grid>
+
+                        </Border>
+                    </Button>
+
+                    <Button Grid.Column="1"
+                            Margin="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{ThemeResource SystemControlForegroundAccentBrush}"
+                            Click="ServerOverviewClicked">
+
+                        <Border>
+                            <Grid>
+                                <Viewbox Margin="25,25,25,50">
+                                    <SymbolIcon Symbol="Globe" />
+                                </Viewbox>
+                                <TextBlock Margin="3"
+                                           VerticalAlignment="Bottom"
+                                           Style="{ThemeResource SubheaderTextBlockStyle}"
+                                           Text="Internet"
+                                           TextAlignment="Center" />
+                            </Grid>
+
+                        </Border>
+                    </Button>
+
+                    <Button Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Margin="10"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            Background="{ThemeResource SystemControlForegroundAccentBrush}"
+                            Click="DeckClicked">
+                        <Border>
+                            <Grid>
+                                <Viewbox Margin="25,25,25,50">
+                                    <SymbolIcon Symbol="Edit" />
+                                </Viewbox>
+                                <TextBlock Margin="3"
+                                           VerticalAlignment="Bottom"
+                                           Style="{ThemeResource SubheaderTextBlockStyle}"
+                                           Text="Deck"
+                                           TextAlignment="Center" />
+                            </Grid>
+
+                        </Border>
+                    </Button>
+
+                    <StackPanel Grid.Row="2"
+                                Grid.ColumnSpan="2"
+                                Margin="10"
+                                Visibility="{Binding DebugVisibility,
+                                                     ElementName=pageRoot}">
+                        <TextBlock Text="LogFileLevel" />
+                        <ComboBox Name="LogFileLevel"
+                                  HorizontalAlignment="Stretch"
+                                  Loaded="LogFileLevel_Loaded"
+                                  SelectionChanged="LogFileLevel_SelectionChanged" />
+                        <TextBlock Text="LogConsoleLevel" />
+                        <ComboBox Name="LogConsoleLevel"
+                                  HorizontalAlignment="Stretch"
+                                  Loaded="LogConsoleLevel_Loaded"
+                                  SelectionChanged="LogConsoleLevel_SelectionChanged" />
+                    </StackPanel>
+                    <Grid Grid.Row="4"
+                          Grid.ColumnSpan="2"
+                          Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Feedback" />
+                        <TextBox Name="mailTextbox"
+                                 Grid.Row="1"
+                                 Margin="0,0,0,5"
+                                 HorizontalAlignment="Stretch"
+                                 PlaceholderText="Name oder Email (optional)" />
+                        <TextBox Name="feedback"
+                                 Grid.Row="2"
+                                 Height="400"
+                                 HorizontalAlignment="Stretch"
+                                 AcceptsReturn="True"
+                                 PlaceholderText="Feedback" />
+                        <Button Grid.Row="3"
+                                Margin="0,5"
+                                HorizontalAlignment="Stretch"
+                                Click="Button_Click"
+                                Content="Senden" />
+                    </Grid>
+
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+
+
+
+    </Grid>
+</Page>

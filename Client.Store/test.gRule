@@ -1,0 +1,165 @@
+<GameData xmlns="http://schemas.datacontract.org/2004/07/Client.Store.Game.Data" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <DeterminatePlayerActions>
+    function GetPlayerActions() {&#xD;
+    var erg = [];&#xD;
+    erg.push(CreatePlayerAction('Runde Beenden', 'Bendet die Runde', function () {&#xD;
+    EndTurn();&#xD;
+    }));&#xD;
+    erg.push(CreateRegionAction(Me, 'DECK', 'Karte Ziehen', 'Zieht eine Karte', function () {&#xD;
+    DrawCard();&#xD;
+    }));&#xD;
+    var hand = Region(Me, 'HAND');&#xD;
+    for (var i = 0; i &lt; hand.Count; i++) {&#xD;
+    var help = function (j) {&#xD;
+    return function () {&#xD;
+    MoveSingelCard(Me, 'HAND', j, Me, 'FIELD', 0);&#xD;
+    };&#xD;
+    };&#xD;
+    erg.push(CreateCardAction(hand.get_Item(i), 'Karte Ziehen', 'Zieht eine Karte', help(i)));&#xD;
+    }&#xD;
+    return erg;&#xD;
+    }&#xD;
+  </DeterminatePlayerActions>
+  <DeterminateWinner>
+    function DeterminateWinner() {&#xD;
+    }&#xD;
+  </DeterminateWinner>
+  <EndOfTurn>
+    function EndOfTurn() {&#xD;
+    }&#xD;
+  </EndOfTurn>
+  <InitGame>
+    function Init(dechNeutral, deckPlayer1, deckPlayer2) {&#xD;
+    var index = [];&#xD;
+    var region = [];&#xD;
+    var player = [];&#xD;
+    for (var i = 0; i &lt; deckPlayer1.length; i++) {&#xD;
+    index[i] = i;&#xD;
+    region[i] = 'DECK';&#xD;
+    player[i] = Player1;&#xD;
+    }&#xD;
+    AddCards(deckPlayer1, player, region, index);&#xD;
+    &#xD;
+    for (var i = 0; i &lt; deckPlayer2.length; i++) {&#xD;
+    player[i] = Player2;&#xD;
+    }&#xD;
+    AddCards(deckPlayer2, player, region, index);&#xD;
+    &#xD;
+    ShuffleStack(Player1, 'DECK');&#xD;
+    ShuffleStack(Player2, 'DECK');&#xD;
+    &#xD;
+    // Karten Ziehen&#xD;
+    DrawCard(Player1, 5);&#xD;
+    DrawCard(Player2, 5);&#xD;
+    }&#xD;
+  </InitGame>
+  <Regions>
+    <GameDataRegions>
+      <Name>DECK</Name>
+      <Player>Any</Player>
+      <Position>2</Position>
+      <RegionType>Stack</RegionType>
+      <VisibleForPlayer>None</VisibleForPlayer>
+    </GameDataRegions>
+    <GameDataRegions>
+      <Name>HAND</Name>
+      <Player>Player1</Player>
+      <Position>2</Position>
+      <RegionType>Hand</RegionType>
+      <VisibleForPlayer>Player1</VisibleForPlayer>
+    </GameDataRegions>
+    <GameDataRegions>
+      <Name>HAND</Name>
+      <Player>Player2</Player>
+      <Position>2</Position>
+      <RegionType>Hand</RegionType>
+      <VisibleForPlayer>Player2</VisibleForPlayer>
+    </GameDataRegions>
+    <GameDataRegions>
+      <Name>FIELD</Name>
+      <Player>Any</Player>
+      <Position>1</Position>
+      <RegionType>Row</RegionType>
+      <VisibleForPlayer>Any</VisibleForPlayer>
+    </GameDataRegions>
+    <GameDataRegions>
+      <Name>DISCARD</Name>
+      <Player>Any</Player>
+      <Position>2</Position>
+      <RegionType>Stack</RegionType>
+      <VisibleForPlayer>Any</VisibleForPlayer>
+    </GameDataRegions>
+  </Regions>
+  <StandardCards/>
+  <StandardFunctions>
+    // Zusatzfunktionen Definieren&#xD;
+    function DrawCard(player, number) {&#xD;
+    if (player === undefined)&#xD;
+    player = Me;&#xD;
+    if (number === undefined)&#xD;
+    number = 1;&#xD;
+    &#xD;
+    var fromIndex = [];&#xD;
+    var fromRegion = [];&#xD;
+    var fromPlayer = [];&#xD;
+    var toIndex = [];&#xD;
+    var toRegion = [];&#xD;
+    var toPlayer = [];&#xD;
+    &#xD;
+    for (var i = 0; i &lt; number; i++) {&#xD;
+    fromIndex[i] = Region(player, 'DECK').Count - 1 - i;&#xD;
+    fromPlayer[i] = player;&#xD;
+    fromRegion[i] = 'DECK';&#xD;
+    toIndex[i] = i;&#xD;
+    toPlayer[i] = player;&#xD;
+    toRegion[i] = 'HAND';&#xD;
+    }&#xD;
+    &#xD;
+    MoveCard(fromPlayer, fromRegion, fromIndex, toPlayer, toRegion, toIndex);&#xD;
+    }&#xD;
+    &#xD;
+    function PlayCard(card) {&#xD;
+    var hand = Region(Me, 'HAND');&#xD;
+    var index = hand.IndexOf(card);&#xD;
+    &#xD;
+    var fromIndex = [];&#xD;
+    var fromRegion = [];&#xD;
+    var fromPlayer = [];&#xD;
+    var toIndex = [];&#xD;
+    var toRegion = [];&#xD;
+    var toPlayer = [];&#xD;
+    &#xD;
+    fromIndex[0] = index;&#xD;
+    fromRegion[0] = 'HAND';&#xD;
+    fromPlayer[0] = Me;&#xD;
+    toIndex[0] = 0;&#xD;
+    toPlayer[0] = Me;&#xD;
+    toRegion[0] = 'DECK';&#xD;
+    &#xD;
+    MoveCard(fromPlayer, fromRegion, fromIndex, toPlayer, toRegion, toIndex);&#xD;
+    }&#xD;
+    &#xD;
+    function MoveSingelCard(fromp, fromn, fromi, top, ton, toi) {&#xD;
+    var fromPlayer = [];&#xD;
+    var fromRegion = [];&#xD;
+    var fromIndex = [];&#xD;
+    var toPlayer = [];&#xD;
+    var toRegion = [];&#xD;
+    var toIndex = [];&#xD;
+    &#xD;
+    fromPlayer[0] = fromp;&#xD;
+    fromRegion[0] = fromn;&#xD;
+    fromIndex[0] = fromi;&#xD;
+    toPlayer[0] = top;&#xD;
+    toRegion[0] = ton;&#xD;
+    toIndex[0] = toi;&#xD;
+    &#xD;
+    MoveCard(fromPlayer, fromRegion, fromIndex, toPlayer, toRegion, toIndex);&#xD;
+    }&#xD;
+  </StandardFunctions>
+  <StartOfTurn>
+    function StartOfTurn() {&#xD;
+    }&#xD;
+  </StartOfTurn>
+  <UsingOwnCards>true</UsingOwnCards>
+</GameData>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root xmlns="http://tempuri.org/Definition.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://tempuri.org/Definition.xsd Definition.xsd">
+
+  <Type Name="Certificate">
+    <Property Type="uuid" Name="UserId" />
+    <Property Type="uuid" Name="CertificateId" />
+    <Property Type="Key" Name="Key" />
+    <Property Type="CertSignature" IsList="true" Name="Signatures" />
+  </Type>
+  <Type Name="Key">
+    <Property Name="Modulus" Type="bytes" />
+    <Property Name="Exponent" Type="bytes" />
+  </Type>
+  <Type Name="CardSignature">
+    <Property Name="Signee" Type="uuid" />
+    <Property Name="CertificateId" Type="uuid" />
+    <Property Name="Value" Type="bytes" />
+  </Type>
+  <Type Name="CertSignature">
+    <Property Name="Signee" Type="uuid" />
+    <Property Name="CertificateId" Type="uuid" />
+    <Property Name="Value" Type="bytes" />
+  </Type>
+  <Type Name="Card">
+	<Property Type="uuid" Name="Archetype" />
+    <Property Type="uuid" Name="CardId" />
+    <Property Type="CardSignature" IsList="true" Name="Signatures" />
+  </Type>
+
+  <Type Name="Error">
+    <Property Type="string" Name="ErrorMessage" />
+  </Type>
+  <Type Name="GetAliasRequest">
+    <Property Type="uuid" Name="Uuid" />
+  </Type>
+  <Type Name="GetAliasResponse">
+    <Property Type="string" Name="Alias" />
+  </Type>
+  <Type Name="CreateAccountRequest">
+    <Property Type="string" Name="Email" />
+    <Property Type="string" Name="Password" />
+  </Type>
+  <Type Name="CreateAccountResponse">
+    <Property Type="uuid" Name="Uuid" />
+  </Type>
+
+  <Type Name="DeleteAccountRequest">
+  </Type>
+  <Type Name="DeleteAccountResponse">
+  </Type>
+
+  <Type Name="GetUserIdRequest">
+  </Type>
+  <Type Name="GetUserIdResponse">
+    <Property Type="uuid" Name="Uuid" />
+  </Type>
+
+  <Type Name="GetServerCertificateRequest">
+  </Type>
+  <Type Name="GetServerCertificateResponse">
+    <Property Type="Certificate" Name="Certificate" />
+  </Type>
+
+  <Type Name="GetUserCertificateRequest">
+  </Type>
+  <Type Name="GetUserCertificateResponse">
+    <Property Type="Certificate" Name="Certificate" />
+  </Type>
+</Root>

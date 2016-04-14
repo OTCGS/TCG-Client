@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{04FA4D52-C715-4EBA-A243-A821A8664ECF}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Client.Store</RootNamespace>
+    <AssemblyName>Client.Store</AssemblyName>
+    <DefaultLanguage>de-DE</DefaultLanguage>
+    <TargetPlatformVersion>8.1</TargetPlatformVersion>
+    <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>Client.Store_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <NuGetPackageImportStamp>34447429</NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <ProjectReference Include="..\Game.Data\Game.Data.csproj">
+      <Project>{25da14cd-7f5a-4ea4-88e4-ec4dd9aa849f}</Project>
+      <Name>Game.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Misc.Portable\Misc.Portable.csproj">
+      <Project>{1d00e979-399f-4d2d-942a-f2c8e4f0f8d2}</Project>
+      <Name>Misc.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Misc.Serialization\Misc.Serialization.csproj">
+      <Project>{b185a324-7d54-49e0-b7a7-f92377b7dab4}</Project>
+      <Name>Misc.Serialization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Network.Relay\Network.Relay.csproj">
+      <Project>{2b34d64c-a52f-4ec1-8b8f-4baf952aba48}</Project>
+      <Name>Network.Relay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Network.Socket.Store\Network.Socket.Store.csproj">
+      <Project>{83987463-f910-4a6b-9eb4-6e770173fb1d}</Project>
+      <Name>Network.Socket.Store</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Network.Socket\Network.Socket.csproj">
+      <Project>{e93e77dc-e7e8-4e18-89f9-972e1bd32d22}</Project>
+      <Name>Network.Socket</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Network\Network.csproj">
+      <Project>{9f6bb3f6-b250-45d0-af81-d643ecf7eb37}</Project>
+      <Name>Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Securety.Store\Securety.Store.csproj">
+      <Project>{b5cba282-5395-45e1-8832-0b0e96876193}</Project>
+      <Name>Securety.Store</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Securety\Securety.csproj">
+      <Project>{0b2b1c53-44b4-420d-a90a-1ba021987c82}</Project>
+      <Name>Securety</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\Data\CardDataStorage.cs" />
+    <Compile Include="Game\Data\Games\SampleTCG.cs" />
+    <Compile Include="Game\Data\ServiceExtensions\Extensions.cs" />
+    <Compile Include="Game\Engine\EventArgs\AddedCardsEventArgs.cs" />
+    <Compile Include="Game\Engine\EventArgs\CardChagnedEventArgs.cs" />
+    <Compile Include="Game\Engine\EventArgs\MoveCardEventArgs.cs" />
+    <Compile Include="Game\Engine\EventArgs\PermutateCardsEventArgs.cs" />
+    <Compile Include="Game\Engine\PlayerMove\CardAction.cs" />
+    <Compile Include="Game\Engine\PlayerMove\PlayerAction.cs" />
+    <Compile Include="Game\Engine\PlayerMove\AbstractAction.cs" />
+    <Compile Include="Game\Engine\PlayerMove\RegionAction.cs" />
+    <Compile Include="Game\Engine\Statemachine\BeforeGameState.cs" />
+    <Compile Include="Game\Engine\Statemachine\EndGAmeState.cs" />
+    <Compile Include="Game\Engine\Statemachine\ActivePlayer.cs" />
+    <Compile Include="Game\Data\CardLookup.cs" />
+    <Compile Include="Game\Engine\MessageProcessorAttribute.cs" />
+    <Compile Include="Game\Engine\Statemachine\EndOfTurnState.cs" />
+    <Compile Include="Game\Engine\Statemachine\InnitDataExchangeState.cs" />
+    <Compile Include="Game\Engine\Statemachine\DetermBeginnerState.cs" />
+    <Compile Include="Game\Engine\Statemachine\PassivePlayerState.cs" />
+    <Compile Include="Game\Engine\GameConnection.cs" />
+    <Compile Include="Game\Engine\GameException.cs" />
+    <Compile Include="Game\Data\GameHistory.cs" />
+    <Compile Include="Game\Engine\GameEngine.cs" />
+    <Compile Include="Game\Engine\Random.cs" />
+    <Compile Include="Game\Engine\Statemachine\OddOrEvanState.cs" />
+    <Compile Include="Game\Engine\Statemachine\StartOfTurnState.cs" />
+    <Compile Include="Game\Engine\Statemachine\StatemachineCore.cs" />
+    <Compile Include="Service References\CardServerService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Common\IProlongedCommand.cs" />
+    <Compile Include="Ui\Common\NotNullToVisibleConverter.cs" />
+    <Compile Include="Ui\Common\FalseToVisibleConverter.cs" />
+    <Compile Include="Ui\Common\ReferenceComparer.cs" />
+    <Compile Include="Ui\Common\TrueToVisibleConverter.cs" />
+    <Compile Include="Ui\Common\NullToVisibleConverter.cs" />
+    <Compile Include="Ui\Common\ByteToImageConverter.cs" />
+    <Compile Include="Ui\Common\CustomDialog.cs" />
+    <Compile Include="Ui\Common\NavigationHelper.cs" />
+    <Compile Include="Ui\Common\ObservableDictionary.cs" />
+    <Compile Include="Ui\Common\RelayCommand.cs" />
+    <Compile Include="Ui\Common\SuspensionManager.cs" />
+    <Compile Include="Ui\Common\ValidationExtension.cs" />
+    <Compile Include="Ui\Controls\CurrentUser.xaml.cs">
+      <DependentUpon>CurrentUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Controls\Game\CardCanvas.cs" />
+    <Compile Include="Ui\Controls\Game\CardControl.cs" />
+    <Compile Include="Ui\Controls\UserLoginMenuItem.cs" />
+    <Compile Include="CreateAccount.xaml.cs">
+      <DependentUpon>CreateAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Dialogs\CreateAccountDialog.xaml.cs">
+      <DependentUpon>CreateAccountDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Dialogs\DialogTemplate.xaml.cs">
+      <DependentUpon>DialogTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Dialogs\LogInAccountDialog.xaml.cs">
+      <DependentUpon>LogInAccountDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ui\Dialogs\LogInPersistentAccountDialog.xaml.cs">
+      <DependentUpon>LogInPersistentAccountDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\InvalidPasswordException.cs" />
+    <Compile Include="Ui\Flyouts\SettingsFlyout.xaml.cs">
+      <DependentUpon>SettingsFlyout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lobby.xaml.cs">
+      <DependentUpon>Lobby.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ui\Viewmodel\Account\LogInPersistedAccountViewmodel.cs" />
+    <Compile Include="Ui\Viewmodel\CentralViewmodel.cs" />
+    <Compile Include="Ui\Viewmodel\Account\CreateAccountViewmodel.cs" />
+    <Compile Include="Ui\Viewmodel\Account\LogInAccountViewmodel.cs" />
+    <Compile Include="Ui\Viewmodel\Game\CardViewmodel.cs" />
+    <Compile Include="Ui\Viewmodel\Game\GameViewmodel.cs" />
+    <Compile Include="Ui\Viewmodel\Game\RegionViewmodel.cs" />
+    <Compile Include="Ui\Viewmodel\Lobby\LobbyViewModel.cs" />
+    <Compile Include="Ui\Viewmodel\Lobby\ServerViewmodel.cs" />
+    <Compile Include="Ui\Viewmodel\Lobby\UserViewmodel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <Content Include="..\GameEditor\MauMau.gRule">
+      <Link>MauMau.gRule</Link>
+    </Content>
+    <None Include="Client.Store_TemporaryKey.pfx" />
+    <None Include="Game\Data\Definition.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Service References\CardServerService\Client.Store.CardServerService.CreateAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CardServerService\Client.Store.CardServerService.DeleteAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CardServerService\Client.Store.CardServerService.GetAliasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CardServerService\Client.Store.CardServerService.GetCardDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CardServerService\Client.Store.CardServerService.GetCardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CardServerService\Client.Store.CardServerService.GetServerCertificateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CardServerService\Client.Store.CardServerService.GetUserCertificateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CardServerService\Client.Store.CardServerService.GetUserIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CardServerService\configuration91.svcinfo" />
+    <None Include="Service References\CardServerService\configuration.svcinfo" />
+    <None Include="Service References\CardServerService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="test.gRule" />
+    <None Include="Service References\CardServerService\cardserver.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CardServerService\CardServiceService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Back.png" />
+    <Content Include="Assets\CardFront\image0.png" />
+    <Content Include="Assets\CardFront\image1.png" />
+    <Content Include="Assets\CardFront\image10.png" />
+    <Content Include="Assets\CardFront\image100.png" />
+    <Content Include="Assets\CardFront\image101.png" />
+    <Content Include="Assets\CardFront\image102.png" />
+    <Content Include="Assets\CardFront\image103.png" />
+    <Content Include="Assets\CardFront\image104.png" />
+    <Content Include="Assets\CardFront\image105.png" />
+    <Content Include="Assets\CardFront\image106.png" />
+    <Content Include="Assets\CardFront\image107.png" />
+    <Content Include="Assets\CardFront\image108.png" />
+    <Content Include="Assets\CardFront\image109.png" />
+    <Content Include="Assets\CardFront\image11.png" />
+    <Content Include="Assets\CardFront\image110.png" />
+    <Content Include="Assets\CardFront\image111.png" />
+    <Content Include="Assets\CardFront\image112.png" />
+    <Content Include="Assets\CardFront\image113.png" />
+    <Content Include="Assets\CardFront\image114.png" />
+    <Content Include="Assets\CardFront\image115.png" />
+    <Content Include="Assets\CardFront\image116.png" />
+    <Content Include="Assets\CardFront\image117.png" />
+    <Content Include="Assets\CardFront\image118.png" />
+    <Content Include="Assets\CardFront\image119.png" />
+    <Content Include="Assets\CardFront\image12.png" />
+    <Content Include="Assets\CardFront\image13.png" />
+    <Content Include="Assets\CardFront\image14.png" />
+    <Content Include="Assets\CardFront\image15.png" />
+    <Content Include="Assets\CardFront\image16.png" />
+    <Content Include="Assets\CardFront\image17.png" />
+    <Content Include="Assets\CardFront\image18.png" />
+    <Content Include="Assets\CardFront\image19.png" />
+    <Content Include="Assets\CardFront\image2.png" />
+    <Content Include="Assets\CardFront\image20.png" />
+    <Content Include="Assets\CardFront\image21.png" />
+    <Content Include="Assets\CardFront\image22.png" />
+    <Content Include="Assets\CardFront\image23.png" />
+    <Content Include="Assets\CardFront\image24.png" />
+    <Content Include="Assets\CardFront\image25.png" />
+    <Content Include="Assets\CardFront\image26.png" />
+    <Content Include="Assets\CardFront\image27.png" />
+    <Content Include="Assets\CardFront\image28.png" />
+    <Content Include="Assets\CardFront\image29.png" />
+    <Content Include="Assets\CardFront\image3.png" />
+    <Content Include="Assets\CardFront\image30.png" />
+    <Content Include="Assets\CardFront\image31.png" />
+    <Content Include="Assets\CardFront\image32.png" />
+    <Content Include="Assets\CardFront\image33.png" />
+    <Content Include="Assets\CardFront\image34.png" />
+    <Content Include="Assets\CardFront\image35.png" />
+    <Content Include="Assets\CardFront\image36.png" />
+    <Content Include="Assets\CardFront\image37.png" />
+    <Content Include="Assets\CardFront\image38.png" />
+    <Content Include="Assets\CardFront\image39.png" />
+    <Content Include="Assets\CardFront\image4.png" />
+    <Content Include="Assets\CardFront\image40.png" />
+    <Content Include="Assets\CardFront\image41.png" />
+    <Content Include="Assets\CardFront\image42.png" />
+    <Content Include="Assets\CardFront\image43.png" />
+    <Content Include="Assets\CardFront\image44.png" />
+    <Content Include="Assets\CardFront\image45.png" />
+    <Content Include="Assets\CardFront\image46.png" />
+    <Content Include="Assets\CardFront\image47.png" />
+    <Content Include="Assets\CardFront\image48.png" />
+    <Content Include="Assets\CardFront\image49.png" />
+    <Content Include="Assets\CardFront\image5.png" />
+    <Content Include="Assets\CardFront\image50.png" />
+    <Content Include="Assets\CardFront\image51.png" />
+    <Content Include="Assets\CardFront\image52.png" />
+    <Content Include="Assets\CardFront\image53.png" />
+    <Content Include="Assets\CardFront\image54.png" />
+    <Content Include="Assets\CardFront\image55.png" />
+    <Content Include="Assets\CardFront\image56.png" />
+    <Content Include="Assets\CardFront\image57.png" />
+    <Content Include="Assets\CardFront\image58.png" />
+    <Content Include="Assets\CardFront\image59.png" />
+    <Content Include="Assets\CardFront\image6.png" />
+    <Content Include="Assets\CardFront\image60.png" />
+    <Content Include="Assets\CardFront\image61.png" />
+    <Content Include="Assets\CardFront\image62.png" />
+    <Content Include="Assets\CardFront\image63.png" />
+    <Content Include="Assets\CardFront\image64.png" />
+    <Content Include="Assets\CardFront\image65.png" />
+    <Content Include="Assets\CardFront\image66.png" />
+    <Content Include="Assets\CardFront\image67.png" />
+    <Content Include="Assets\CardFront\image68.png" />
+    <Content Include="Assets\CardFront\image69.png" />
+    <Content Include="Assets\CardFront\image7.png" />
+    <Content Include="Assets\CardFront\image70.png" />
+    <Content Include="Assets\CardFront\image71.png" />
+    <Content Include="Assets\CardFront\image72.png" />
+    <Content Include="Assets\CardFront\image73.png" />
+    <Content Include="Assets\CardFront\image74.png" />
+    <Content Include="Assets\CardFront\image75.png" />
+    <Content Include="Assets\CardFront\image76.png" />
+    <Content Include="Assets\CardFront\image77.png" />
+    <Content Include="Assets\CardFront\image78.png" />
+    <Content Include="Assets\CardFront\image79.png" />
+    <Content Include="Assets\CardFront\image8.png" />
+    <Content Include="Assets\CardFront\image80.png" />
+    <Content Include="Assets\CardFront\image81.png" />
+    <Content Include="Assets\CardFront\image82.png" />
+    <Content Include="Assets\CardFront\image83.png" />
+    <Content Include="Assets\CardFront\image84.png" />
+    <Content Include="Assets\CardFront\image85.png" />
+    <Content Include="Assets\CardFront\image86.png" />
+    <Content Include="Assets\CardFront\image87.png" />
+    <Content Include="Assets\CardFront\image88.png" />
+    <Content Include="Assets\CardFront\image89.png" />
+    <Content Include="Assets\CardFront\image9.png" />
+    <Content Include="Assets\CardFront\image90.png" />
+    <Content Include="Assets\CardFront\image91.png" />
+    <Content Include="Assets\CardFront\image92.png" />
+    <Content Include="Assets\CardFront\image93.png" />
+    <Content Include="Assets\CardFront\image94.png" />
+    <Content Include="Assets\CardFront\image95.png" />
+    <Content Include="Assets\CardFront\image96.png" />
+    <Content Include="Assets\CardFront\image97.png" />
+    <Content Include="Assets\CardFront\image98.png" />
+    <Content Include="Assets\CardFront\image99.png" />
+    <Content Include="Assets\Logo.scale-100.png" />
+    <Content Include="Assets\SmallLogo.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\Front.png" />
+    <Content Include="FodyWeavers.xml" />
+    <Content Include="Ui\Common\ReadMe.txt" />
+    <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ui\Controls\CurrentUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Dialogs\CreateAccountDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Dialogs\DialogTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Dialogs\LogInAccountDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Dialogs\LogInPersistentAccountDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ui\Flyouts\SettingsFlyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Lobby.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CardServerService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Jint">
+      <HintPath>..\packages\Jint.2.3.0\lib\portable-net40+sl50+win+wp80\Jint.dll</HintPath>
+    </Reference>
+    <Reference Include="MentalCardGame">
+      <HintPath>..\packages\MentalCardGame.1.0.0.0\lib\portable-net45+netcore45+wpa81\MentalCardGame.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyChanged">
+      <HintPath>..\packages\PropertyChanged.Fody.1.48.5\Lib\portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\PropertyChanged.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
+    <VisualStudioVersion>12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Dieses Projekt verweist auf mindestens ein NuGet-Paket, das auf diesem Computer fehlt. Aktivieren Sie die Wiederherstellung von NuGet-Paketen, um die fehlende Datei herunterzuladen. Weitere Informationen finden Sie unter "http://go.microsoft.com/fwlink/?LinkID=322105". Die fehlende Datei ist "{0}".</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\Fody.1.25.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.25.0\build\Fody.targets'))" />
+  </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="..\packages\Fody.1.25.0\build\Fody.targets" Condition="Exists('..\packages\Fody.1.25.0\build\Fody.targets')" />
+</Project>

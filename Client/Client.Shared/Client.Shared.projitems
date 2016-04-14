@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>edc317cd-2ee3-4e21-9710-86b168e8272e</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Client</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AppShared.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ButtonDisabledCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Converters\ChainConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Converters\ConverterWithDefinedTargetType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Converters\CountToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Converters\ByteToFingerprintConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Converters\ByteToImageConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Converters\NegateBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Converters\TradeagreementToTradeagreementViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Converters\NullToFalseConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\NavigationHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ObservableDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ReferenceComparer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\RelayCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\SecurityExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\StyleSelectors\ListEnabledStyleSelector.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\SuspensionManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\VariableGridView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\WeakDictionary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CardControl.xaml.cs">
+      <DependentUpon>CardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Game\CardCanvas.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Game\CardControl.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Game\GameControl.xaml.cs">
+      <DependentUpon>GameControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\StandardHeadder.xaml.cs">
+      <DependentUpon>StandardHeadder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)DDR.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Exceptions\InvalidPasswordException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Data\CardLookup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Data\GameHistory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Data\Games\GameData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Data\Games\SampleTCG.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Data\ServiceExtensions\Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\EventArgs\AddedCardsEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\EventArgs\CardChagnedEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\EventArgs\MoveCardEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\EventArgs\ChangeTextEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\EventArgs\ShowMessageEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\EventArgs\PermutateCardsEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\GameConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\GameEngine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\GameException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\MessageProcessorAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\PlayerMove\AbstractAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\PlayerMove\CardAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\PlayerMove\PlayerAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\PlayerMove\RegionAction.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\Random.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\Statemachine\ActivePlayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\Statemachine\BeforeGameState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\Statemachine\DetermBeginnerState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\Statemachine\EndGAmeState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\Statemachine\EndOfTurnState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\Statemachine\InnitDataExchangeState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\Statemachine\OddOrEvanState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\Statemachine\PassivePlayerState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\Statemachine\StartOfTurnState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Game\Engine\Statemachine\StatemachineCore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HubPage.xaml.cs">
+      <DependentUpon>HubPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\BasicPage1.xaml.cs">
+      <DependentUpon>BasicPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\CardOverview.xaml.cs">
+      <DependentUpon>CardOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\CreateAccount.xaml.cs">
+      <DependentUpon>CreateAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\DeckAdministration.xaml.cs">
+      <DependentUpon>DeckAdministration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\NetworkLobby.xaml.cs">
+      <DependentUpon>NetworkLobby.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\LogIn.xaml.cs">
+      <DependentUpon>LogIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\ServerOverview.xaml.cs">
+      <DependentUpon>ServerOverview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\TradePage.xaml.cs">
+      <DependentUpon>TradePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ServiceReferences\CardServerService\ServicePortClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trade\MergeConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trade\TradeConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TypeScript\TSScript.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TypeScript\TypeScriptCompiler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\CardCollectionViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\DeckCollectionViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\Game\CardViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\Game\GameViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\Game\RegionViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\BaseNetworkViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\ServerNetworkViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\LocalNetworkViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\LoginViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\RegisterViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\ServerOverviewViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\TradeagremmentViewmodel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\TradeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viewmodel\UserDataViewmodel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\CardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Game\GameControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\StandardHeadder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)HubPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\BasicPage1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\CardOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\CreateAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\DeckAdministration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\NetworkLobby.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\LogIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\ServerOverview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\TradePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Back.png" />
+    <Content Include="$(MSBuildThisFileDirectory)TypeScript\Compile.js" />
+    <Content Include="$(MSBuildThisFileDirectory)TypeScript\lib.d.ts" />
+    <Content Include="$(MSBuildThisFileDirectory)TypeScript\typescript.d.ts" />
+    <Content Include="$(MSBuildThisFileDirectory)TypeScript\typescript.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Game\Data\Definition.xsd" />
+    <None Include="$(MSBuildThisFileDirectory)TypeScript\Game.d.ts" />
+    <None Include="$(MSBuildThisFileDirectory)Viewmodel\Game\ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de-DE\Resources.resw" />
+  </ItemGroup>
+</Project>

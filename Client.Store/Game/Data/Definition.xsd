@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Definition"
+    targetNamespace="http://tempuri.org/Definition.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/Definition.xsd"
+    xmlns:mstns="http://tempuri.org/Definition.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+
+  <xs:element name="Root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice maxOccurs="unbounded" minOccurs="1">
+          <xs:element name="Type" type="mstns:Type" />
+          <xs:element name="Enum"   type="mstns:Enum" />
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="Type">
+    <xs:sequence>
+      <xs:element name="Property" type="mstns:Prop" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:ID" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="Enum">
+    <xs:sequence>
+      <xs:element name="Value"  type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:ID" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="Prop">
+    <xs:attribute name="Name" type="xs:string" use="required" />
+    <xs:attribute name="IsList" type="xs:boolean" default="false" />
+    <xs:attribute name="Type" use="required">
+      <xs:simpleType>
+        <xs:union memberTypes="mstns:primitiv xs:IDREF">
+        </xs:union>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:simpleType name="primitiv">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="int32" />
+      <xs:enumeration value="int64" />
+      <xs:enumeration value="uint32" />
+      <xs:enumeration value="uint64" />
+      <xs:enumeration value="float32" />
+      <xs:enumeration value="float64" />
+      <xs:enumeration value="bytes" />
+      <xs:enumeration value="uuid" />
+      <xs:enumeration value="string" />
+      <xs:enumeration value="bool" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Sch_EnumFinished" xml:space="preserve">
+    <value>Enumeration has already finished.</value>
+  </data>
+  <data name="Sch_EnumNotStarted" xml:space="preserve">
+    <value>Enumeration has not started. Call MoveNext.</value>
+  </data>
+  <data name="Sch_XsdDateTimeCompare" xml:space="preserve">
+    <value>Cannot compare '{0}' and '{1}'.</value>
+  </data>
+  <data name="Xdom_Empty_LocalName" xml:space="preserve">
+    <value>The local name for elements or attributes cannot be null or an empty string.</value>
+  </data>
+  <data name="Xml_BadNameChar" xml:space="preserve">
+    <value>The '{0}' character, hexadecimal value {1}, cannot be included in a name.</value>
+  </data>
+  <data name="Xml_BadStartNameChar" xml:space="preserve">
+    <value>Name cannot begin with the '{0}' character, hexadecimal value {1}.</value>
+  </data>
+  <data name="Xml_EmptyName" xml:space="preserve">
+    <value>The empty string '' is not a valid name.</value>
+  </data>
+  <data name="Xml_ErrorPosition" xml:space="preserve">
+    <value>Line {0}, position {1}.</value>
+  </data>
+  <data name="Xml_InvalidBase64Value" xml:space="preserve">
+    <value>'{0}' is not a valid Base64 text sequence.</value>
+  </data>
+  <data name="Xml_InvalidBinHexValue" xml:space="preserve">
+    <value>'{0}' is not a valid BinHex text sequence.</value>
+  </data>
+  <data name="Xml_InvalidBinHexValueOddCount" xml:space="preserve">
+    <value>'{0}' is not a valid BinHex text sequence. The sequence must contain an even number of characters.</value>
+  </data>
+  <data name="Xml_InvalidCharacter" xml:space="preserve">
+    <value>'{0}', hexadecimal value {1}, is an invalid character.</value>
+  </data>
+  <data name="Xml_InvalidNodeType" xml:space="preserve">
+    <value>'{0}' is an invalid XmlNodeType.</value>
+  </data>
+  <data name="Xml_InvalidOperation" xml:space="preserve">
+    <value>Operation is not valid due to the current state of the object.</value>
+  </data>
+  <data name="Xml_InvalidPIName" xml:space="preserve">
+    <value>'{0}' is an invalid name for processing instructions.</value>
+  </data>
+  <data name="Xml_InvalidReadContentAs" xml:space="preserve">
+    <value>The {0} method is not supported on node type {1}. If you want to read typed content of an element, use the ReadElementContentAs method.</value>
+  </data>
+  <data name="Xml_InvalidReadElementContentAs" xml:space="preserve">
+    <value>The {0} method is not supported on node type {1}.</value>
+  </data>
+  <data name="Xml_InvalidSurrogateHighChar" xml:space="preserve">
+    <value>Invalid high surrogate character (0x{0}). A high surrogate character must have a value from range (0xD800 - 0xDBFF).</value>
+  </data>
+  <data name="Xml_InvalidSurrogateMissingLowChar" xml:space="preserve">
+    <value>The surrogate pair is invalid. Missing a low surrogate character.</value>
+  </data>
+  <data name="Xml_InvalidSurrogatePairWithArgs" xml:space="preserve">
+    <value>The surrogate pair (0x{0}, 0x{1}) is invalid. A high surrogate character (0xD800 - 0xDBFF) must always be paired with a low surrogate character (0xDC00 - 0xDFFF).</value>
+  </data>
+  <data name="Xml_MessageWithErrorPosition" xml:space="preserve">
+    <value>{0} Line {1}, position {2}.</value>
+  </data>
+  <data name="Xml_MixingBinaryContentMethods" xml:space="preserve">
+    <value>ReadContentAsBase64 and ReadContentAsBinHex method calls cannot be mixed with calls to ReadElementContentAsBase64 and ReadElementContentAsBinHex.</value>
+  </data>
+  <data name="Xml_NamespaceDeclXmlXmlns" xml:space="preserve">
+    <value>Prefix '{0}' cannot be mapped to namespace name reserved for "xml" or "xmlns".</value>
+  </data>
+  <data name="Xml_PrefixForEmptyNs" xml:space="preserve">
+    <value>Cannot use a prefix with an empty namespace.</value>
+  </data>
+  <data name="Xml_UnknownResourceString" xml:space="preserve">
+    <value>Unknown resource string: {0}.</value>
+  </data>
+  <data name="Xml_XmlnsPrefix" xml:space="preserve">
+    <value>Prefix "xmlns" is reserved for use by XML.</value>
+  </data>
+  <data name="Xml_XmlPrefix" xml:space="preserve">
+    <value>Prefix "xml" is reserved for use by XML and can be mapped only to namespace name "http://www.w3.org/XML/1998/namespace".</value>
+  </data>
+  <data name="XmlBadName" xml:space="preserve">
+    <value>A node of type '{0}' cannot have the name '{1}'.</value>
+  </data>
+  <data name="XmlConvert_BadFormat" xml:space="preserve">
+    <value>The string '{0}' is not a valid {1} value.</value>
+  </data>
+  <data name="XmlConvert_Overflow" xml:space="preserve">
+    <value>Value '{0}' was either too large or too small for {1}.</value>
+  </data>
+  <data name="XmlConvert_TypeFromString" xml:space="preserve">
+    <value>Xml type '{0}' cannot convert to Clr type '{1}' unless the source value is a String or an XmlAtomicValue.</value>
+  </data>
+  <data name="XmlConvert_TypeListBadMapping" xml:space="preserve">
+    <value>Xml type 'List of {0}' does not support Clr type '{1}'.</value>
+  </data>
+  <data name="XmlConvert_TypeListBadMapping2" xml:space="preserve">
+    <value>Xml type 'List of {0}' does not support a conversion from Clr type '{1}' to Clr type '{2}'.</value>
+  </data>
+  <data name="XmlConvert_TypeNoNamespace" xml:space="preserve">
+    <value>The String '{0}' cannot be represented as an XmlQualifiedName.  A namespace for prefix '{1}' cannot be found.</value>
+  </data>
+  <data name="XmlConvert_TypeNoPrefix" xml:space="preserve">
+    <value>The QName '{0}' cannot be represented as a String.  A prefix for namespace '{1}' cannot be found.</value>
+  </data>
+  <data name="XmlConvert_TypeToString" xml:space="preserve">
+    <value>Xml type '{0}' cannot convert from Clr type '{1}' unless the destination type is String or XmlAtomicValue.</value>
+  </data>
+  <data name="XmlNoNameAllowed" xml:space="preserve">
+    <value>A node of type '{0}' cannot have a name.</value>
+  </data>
+  <data name="XmlUndefinedAlias" xml:space="preserve">
+    <value>Namespace prefix '{0}' is not defined.</value>
+  </data>
+  <data name="Xp_BadQueryObject" xml:space="preserve">
+    <value>This is an invalid object. Only objects returned from Compile() can be passed as input.</value>
+  </data>
+  <data name="Xp_CurrentNotAllowed" xml:space="preserve">
+    <value>The 'current()' function cannot be used in a pattern.</value>
+  </data>
+  <data name="Xp_ExprExpected" xml:space="preserve">
+    <value>'{0}' is an invalid expression.</value>
+  </data>
+  <data name="Xp_FunctionFailed" xml:space="preserve">
+    <value>Function '{0}()' has failed.</value>
+  </data>
+  <data name="Xp_InvalidArgumentType" xml:space="preserve">
+    <value>The argument to function '{0}' in '{1}' cannot be converted to a node-set.</value>
+  </data>
+  <data name="Xp_InvalidKeyPattern" xml:space="preserve">
+    <value>'{0}' is an invalid key pattern. It either contains a variable reference or 'key()' function.</value>
+  </data>
+  <data name="Xp_InvalidName" xml:space="preserve">
+    <value>'{0}' has an invalid qualified name.</value>
+  </data>
+  <data name="Xp_InvalidNumArgs" xml:space="preserve">
+    <value>Function '{0}' in '{1}' has an invalid number of arguments.</value>
+  </data>
+  <data name="Xp_InvalidPattern" xml:space="preserve">
+    <value>'{0}' is an invalid XSLT pattern.</value>
+  </data>
+  <data name="Xp_InvalidToken" xml:space="preserve">
+    <value>'{0}' has an invalid token.</value>
+  </data>
+  <data name="Xp_NoContext" xml:space="preserve">
+    <value>Namespace Manager or XsltContext needed. This query has a prefix, variable, or user-defined function.</value>
+  </data>
+  <data name="Xp_NodeSetExpected" xml:space="preserve">
+    <value>Expression must evaluate to a node-set.</value>
+  </data>
+  <data name="Xp_NotSupported" xml:space="preserve">
+    <value>The XPath query '{0}' is not supported.</value>
+  </data>
+  <data name="Xp_QueryTooComplex" xml:space="preserve">
+    <value>The xpath query is too complex.</value>
+  </data>
+  <data name="Xp_UnclosedString" xml:space="preserve">
+    <value>This is an unclosed string.</value>
+  </data>
+  <data name="Xp_UndefFunc" xml:space="preserve">
+    <value>The function '{0}()' is undefined.</value>
+  </data>
+  <data name="Xp_UndefinedXsltContext" xml:space="preserve">
+    <value>XsltContext is needed for this query because of an unknown function.</value>
+  </data>
+  <data name="Xp_UndefVar" xml:space="preserve">
+    <value>The variable '{0}' is undefined.</value>
+  </data>
+  <data name="Xpn_BadPosition" xml:space="preserve">
+    <value>Operation is not valid due to the current position of the navigator.</value>
+  </data>
+  <data name="Arg_CannotCreateNode" xml:space="preserve">
+    <value>Cannot create node of type {0}.</value>
+  </data>
+  <data name="Arg_ExpectingXmlTextReader" xml:space="preserve">
+    <value>The XmlReader passed in to construct this XmlValidatingReaderImpl must be an instance of a System.Xml.XmlTextReader.</value>
+  </data>
+  <data name="Arg_IncompatibleParamType" xml:space="preserve">
+    <value>Type is incompatible.</value>
+  </data>
+  <data name="Xdom_Attr_InUse" xml:space="preserve">
+    <value>The 'Attribute' node cannot be inserted because it is already an attribute of another element.</value>
+  </data>
+  <data name="Xdom_Attr_Name" xml:space="preserve">
+    <value>The attribute local name cannot be empty.</value>
+  </data>
+  <data name="Xdom_Attr_Reserved_XmlNS" xml:space="preserve">
+    <value>The namespace declaration attribute has an incorrect 'namespaceURI': '{0}'.</value>
+  </data>
+  <data name="Xdom_AttrCol_Insert" xml:space="preserve">
+    <value>The reference node must be a child of the current node.</value>
+  </data>
+  <data name="Xdom_AttrCol_Object" xml:space="preserve">
+    <value>An 'Attributes' collection can only contain 'Attribute' objects.</value>
+  </data>
+  <data name="Xdom_Document_Innertext" xml:space="preserve">
+    <value>The 'InnerText' of a 'Document' node is read-only and cannot be set.</value>
+  </data>
+  <data name="Xdom_DualDeclarationNode" xml:space="preserve">
+    <value>This document already has an 'XmlDeclaration' node.</value>
+  </data>
+  <data name="Xdom_DualDocumentElementNode" xml:space="preserve">
+    <value>This document already has a 'DocumentElement' node.</value>
+  </data>
+  <data name="Xdom_DualDocumentTypeNode" xml:space="preserve">
+    <value>This document already has a 'DocumentType' node.</value>
+  </data>
+  <data name="Xdom_Ele_Prefix" xml:space="preserve">
+    <value>The prefix of an element name cannot start with 'xml'.</value>
+  </data>
+  <data name="Xdom_Ent_Innertext" xml:space="preserve">
+    <value>The 'InnerText' of an 'Entity' node is read-only and cannot be set.</value>
+  </data>
+  <data name="Xdom_EntRef_SetVal" xml:space="preserve">
+    <value>'EntityReference' nodes have no support for setting value.</value>
+  </data>
+  <data name="Xdom_Enum_ElementList" xml:space="preserve">
+    <value>The element list has changed. The enumeration operation failed to continue.</value>
+  </data>
+  <data name="Xdom_Import" xml:space="preserve">
+    <value>Cannot import nodes of type '{0}'.</value>
+  </data>
+  <data name="Xdom_Import_NullNode" xml:space="preserve">
+    <value>Cannot import a null node.</value>
+  </data>
+  <data name="Xdom_IndexOutOfRange" xml:space="preserve">
+    <value>The index being passed in is out of range.</value>
+  </data>
+  <data name="Xdom_Invalid_NT_String" xml:space="preserve">
+    <value>'{0}' does not represent any 'XmlNodeType'.</value>
+  </data>
+  <data name="Xdom_InvalidCharacter_EntityReference" xml:space="preserve">
+    <value>Cannot create an 'EntityReference' node with a name starting with '#'.</value>
+  </data>
+  <data name="Xdom_Load_NoDocument" xml:space="preserve">
+    <value>The document to be loaded could not be found.</value>
+  </data>
+  <data name="Xdom_Load_NoReader" xml:space="preserve">
+    <value>There is no reader from which to load the document.</value>
+  </data>
+  <data name="Xdom_NamedNode_Context" xml:space="preserve">
+    <value>The named node is from a different document context.</value>
+  </data>
+  <data name="Xdom_Node_Cloning" xml:space="preserve">
+    <value>'Entity' and 'Notation' nodes cannot be cloned.</value>
+  </data>
+  <data name="Xdom_Node_Insert_Child" xml:space="preserve">
+    <value>Cannot insert a node or any ancestor of that node as a child of itself.</value>
+  </data>
+  <data name="Xdom_Node_Insert_Contain" xml:space="preserve">
+    <value>The current node cannot contain other nodes.</value>
+  </data>
+  <data name="Xdom_Node_Insert_Context" xml:space="preserve">
+    <value>The node to be inserted is from a different document context.</value>
+  </data>
+  <data name="Xdom_Node_Insert_Location" xml:space="preserve">
+    <value>Cannot insert the node in the specified location.</value>
+  </data>
+  <data name="Xdom_Node_Insert_Path" xml:space="preserve">
+    <value>The reference node is not a child of this node.</value>
+  </data>
+  <data name="Xdom_Node_Insert_TypeConflict" xml:space="preserve">
+    <value>The specified node cannot be inserted as the valid child of this node, because the specified node is the wrong type.</value>
+  </data>
+  <data name="Xdom_Node_Modify_ReadOnly" xml:space="preserve">
+    <value>This node is read-only. It cannot be modified.</value>
+  </data>
+  <data name="Xdom_Node_Null_Doc" xml:space="preserve">
+    <value>Cannot create a node without an owner document.</value>
+  </data>
+  <data name="Xdom_Node_Remove_Child" xml:space="preserve">
+    <value>The node to be removed is not a child of this node.</value>
+  </data>
+  <data name="Xdom_Node_Remove_Contain" xml:space="preserve">
+    <value>The current node cannot contain other nodes, so the node to be removed is not its child.</value>
+  </data>
+  <data name="Xdom_Node_SetVal" xml:space="preserve">
+    <value>Cannot set a value on node type '{0}'.</value>
+  </data>
+  <data name="Xdom_NoRootEle" xml:space="preserve">
+    <value>The document does not have a root element.</value>
+  </data>
+  <data name="Xdom_Set_InnerXml" xml:space="preserve">
+    <value>Cannot set the 'InnerXml' for the current node because it is either read-only or cannot have children.</value>
+  </data>
+  <data name="Xdom_standalone" xml:space="preserve">
+    <value>Wrong value for the XML declaration standalone attribute of '{0}'.</value>
+  </data>
+  <data name="Xdom_TextNode_SplitText" xml:space="preserve">
+    <value>The 'Text' node is not connected in the DOM live tree. No 'SplitText' operation could be performed.</value>
+  </data>
+  <data name="Xdom_Version" xml:space="preserve">
+    <value>Wrong XML version information. The XML must match production "VersionNum ::= '1.' [0-9]+".</value>
+  </data>
+  <data name="Xdom_WS_Char" xml:space="preserve">
+    <value>The string for white space contains an invalid character.</value>
+  </data>
+  <data name="Xml_CanNotBindToReservedNamespace" xml:space="preserve">
+    <value>Cannot bind to the reserved namespace.</value>
+  </data>
+  <data name="Xml_Closed" xml:space="preserve">
+    <value>The Writer is closed.</value>
+  </data>
+  <data name="Xml_ClosedOrError" xml:space="preserve">
+    <value>The Writer is closed or in error state.</value>
+  </data>
+  <data name="Xml_DupXmlDecl" xml:space="preserve">
+    <value>Cannot write XML declaration. WriteStartDocument method has already written it.</value>
+  </data>
+  <data name="Xml_InvalidCDataChars" xml:space="preserve">
+    <value>Cannot have ']]&gt;' inside an XML CDATA block.</value>
+  </data>
+  <data name="Xml_InvalidCommentChars" xml:space="preserve">
+    <value>An XML comment cannot contain '--', and '-' cannot be the last character.</value>
+  </data>
+  <data name="Xml_InvalidIndentation" xml:space="preserve">
+    <value>Indentation value must be greater than 0.</value>
+  </data>
+  <data name="Xml_InvalidNameChars" xml:space="preserve">
+    <value>Invalid name character in '{0}'.</value>
+  </data>
+  <data name="Xml_InvalidNameCharsDetail" xml:space="preserve">
+    <value>Invalid name character in '{0}'. The '{1}' character, hexadecimal value {2}, cannot be included in a name.</value>
+  </data>
+  <data name="Xml_InvalidPiChars" xml:space="preserve">
+    <value>Cannot have '?&gt;' inside an XML processing instruction.</value>
+  </data>
+  <data name="Xml_InvalidPrefix" xml:space="preserve">
+    <value>Prefixes beginning with "xml" (regardless of whether the characters are uppercase, lowercase, or some combination thereof) are reserved for use by XML.</value>
+  </data>
+  <data name="Xml_InvalidQuote" xml:space="preserve">
+    <value>Invalid XML attribute quote character. Valid attribute quote characters are ' and ".</value>
+  </data>
+  <data name="Xml_InvalidXmlSpace" xml:space="preserve">
+    <value>'{0}' is an invalid xml:space value.</value>
+  </data>
+  <data name="Xml_NoNamespaces" xml:space="preserve">
+    <value>Cannot set the namespace if Namespaces is 'false'.</value>
+  </data>
+  <data name="Xml_NonWhitespace" xml:space="preserve">
+    <value>Only white space characters should be used.</value>
+  </data>
+  <data name="Xml_NoRoot" xml:space="preserve">
+    <value>Document does not have a root element.</value>
+  </data>
+  <data name="Xml_NoStartTag" xml:space="preserve">
+    <value>There was no XML start tag open.</value>
+  </data>
+  <data name="Xml_NotInWriteState" xml:space="preserve">
+    <value>NotInWriteState.</value>
+  </data>
+  <data name="Xml_NotTheFirst" xml:space="preserve">
+    <value>WriteStartDocument needs to be the first call.</value>
+  </data>
+  <data name="Xml_NullResolver" xml:space="preserve">
+    <value>Resolving of external URIs was prohibited.</value>
+  </data>
+  <data name="Xml_RelativeUriNotSupported" xml:space="preserve">
+    <value>Relative URIs are not supported.</value>
+  </data>
+  <data name="Xml_SurrogatePairSplit" xml:space="preserve">
+    <value>The second character surrogate pair is not in the input buffer to be written.</value>
+  </data>
+  <data name="Xml_UndeclaredParEntity" xml:space="preserve">
+    <value>Reference to undeclared parameter entity '{0}'.</value>
+  </data>
+  <data name="Xml_UndefNamespace" xml:space="preserve">
+    <value>The '{0}' namespace is not defined.</value>
+  </data>
+  <data name="Xml_UndefPrefix" xml:space="preserve">
+    <value>An undefined prefix is in use.</value>
+  </data>
+  <data name="Xml_UnexpectedNodeType" xml:space="preserve">
+    <value>Unexpected XmlNodeType: '{0}'.</value>
+  </data>
+  <data name="Xml_UnsupportedClass" xml:space="preserve">
+    <value>Object type is not supported.</value>
+  </data>
+  <data name="Xml_UntrustedCodeSettingResolver" xml:space="preserve">
+    <value>XmlResolver can be set only by fully trusted code.</value>
+  </data>
+  <data name="Xml_WrongToken" xml:space="preserve">
+    <value>Token {0} in state {1} would result in an invalid XML document.</value>
+  </data>
+  <data name="Xml_XmlnsBelongsToReservedNs" xml:space="preserve">
+    <value>The 'xmlns' attribute is bound to the reserved namespace 'http://www.w3.org/2000/xmlns/'.</value>
+  </data>
+  <data name="XmlNonCLSCompliantException" xml:space="preserve">
+    <value>Non-CLS Compliant Exception.</value>
+  </data>
+  <data name="Xml_CannotStartDocumentOnFragment" xml:space="preserve">
+    <value>WriteStartDocument cannot be called on writers created with ConformanceLevel.Fragment.</value>
+  </data>
+  <data name="Xml_CannotWriteXmlDecl" xml:space="preserve">
+    <value>Cannot write XML declaration. XML declaration can be only at the beginning of the document.</value>
+  </data>
+  <data name="Xml_ConformanceLevelFragment" xml:space="preserve">
+    <value>Make sure that the ConformanceLevel setting is set to ConformanceLevel.Fragment or ConformanceLevel.Auto if you want to write an XML fragment.</value>
+  </data>
+  <data name="Xml_DtdAlreadyWritten" xml:space="preserve">
+    <value>The DTD has already been written out.</value>
+  </data>
+  <data name="Xml_DtdNotAllowedInFragment" xml:space="preserve">
+    <value>DTD is not allowed in XML fragments.</value>
+  </data>
+  <data name="Xml_DupAttributeName" xml:space="preserve">
+    <value>'{0}' is a duplicate attribute name.</value>
+  </data>
+  <data name="Xml_EmptyLocalName" xml:space="preserve">
+    <value>The empty string '' is not a valid local name.</value>
+  </data>
+  <data name="Xml_RedefinePrefix" xml:space="preserve">
+    <value>The prefix '{0}' cannot be redefined from '{1}' to '{2}' within the same start element tag.</value>
+  </data>
+  <data name="XmlConvert_BadUri" xml:space="preserve">
+    <value>The string was not recognized as a valid Uri.</value>
+  </data>
+  <data name="XmlConvert_NotOneCharString" xml:space="preserve">
+    <value>String must be exactly one character long.</value>
+  </data>
+  <data name="XmlConvert_TypeBadMapping" xml:space="preserve">
+    <value>Xml type '{0}' does not support Clr type '{1}'.</value>
+  </data>
+  <data name="XmlConvert_TypeBadMapping2" xml:space="preserve">
+    <value>Xml type '{0}' does not support a conversion from Clr type '{1}' to Clr type '{2}'.</value>
+  </data>
+  <data name="Xpn_MissingParent" xml:space="preserve">
+    <value>The current position of the navigator is missing a valid parent.</value>
+  </data>
+  <data name="Xpn_NoContent" xml:space="preserve">
+    <value>No content generated as the result of the operation.</value>
+  </data>
+  <data name="sdf" xml:space="preserve">
+    <value />
+  </data>
+</root>

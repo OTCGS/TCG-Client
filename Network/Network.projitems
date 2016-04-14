@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>e81d1a4b-80ef-4308-97fe-91628853777f</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Network</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AbstractConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Connection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameServer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LocalServer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OflineTestServer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RawConnections\DirectConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RawConnections\NatPunchConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RawConnections\RawConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RawConnections\RelayConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RawConnections\ServiceConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RawConnections\UserConnectionEnvalop.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RelayServer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ServerServer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)User.cs" />
+  </ItemGroup>
+</Project>

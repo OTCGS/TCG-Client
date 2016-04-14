@@ -1,0 +1,13 @@
+﻿<Application x:Class="Client.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Viewmodel="using:Client.Viewmodel"
+             xmlns:local="using:Client"
+             RequestedTheme="Dark">
+    <Application.Resources>
+
+        <FontFamily x:Key="OnlineOfflineIconFontFamily">Segoe MDL2 Assets</FontFamily>
+        <x:String x:Key="OfflineGlyphe">&#xEB5E;</x:String>
+        <x:String x:Key="OnlineGlyphe">&#xE701;</x:String>
+    </Application.Resources>
+</Application>

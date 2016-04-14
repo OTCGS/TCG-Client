@@ -1,0 +1,251 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Client.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Viewmodel="using:Client.Viewmodel"
+    xmlns:Controls="using:Client.Controls"
+    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" 
+    xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:Converters="using:Client.Common.Converters"
+    x:Class="Client.Pages.TradePage"
+    mc:Ignorable="d"
+    x:Name="root">
+    <Page.Resources>
+        <Converters:TradeagreementToTradeagreementViewmodel x:Key="TradeagreementToTradeagreementViewmodel"/>
+        <Converters:NegateBoolConverter x:Key="NegateBoolConverter"/>
+        <DataTemplate x:Key="CardTemplate">
+            <Controls:CardControl DataContext="{Binding}"/>
+        </DataTemplate>
+    </Page.Resources>
+    <Page.IsEnabled>
+        <Binding Converter="{StaticResource NegateBoolConverter}" Path="IsTrading"/>
+    </Page.IsEnabled>
+
+    <Page.DataContext>
+        <Viewmodel:TradeViewModel/>
+    </Page.DataContext>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Recived">
+                <VisualState x:Name="NonRecived" />
+                <VisualState x:Name="RecivedOffer" >
+
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.IsEnabled)" Storyboard.TargetName="gridView">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Boolean>False</x:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.IsEnabled)" Storyboard.TargetName="gridView1">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Boolean>False</x:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+
+                </VisualState>
+            </VisualStateGroup>
+            <VisualStateGroup x:Name="Sender">
+
+                <VisualState x:Name="NonSended" />
+                <VisualState x:Name="SendedOffer" >
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.IsEnabled)" Storyboard.TargetName="gridView">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Boolean>False</x:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Control.IsEnabled)" Storyboard.TargetName="gridView1">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Boolean>False</x:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="border1">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+
+        </VisualStateManager.VisualStateGroups>
+        <Interactivity:Interaction.Behaviors>
+            <Core:DataTriggerBehavior Binding="{Binding RecivedTradeOffer}" Value="{x:Null}" ComparisonCondition="NotEqual" >
+                <Core:GoToStateAction StateName="RecivedOffer" />
+            </Core:DataTriggerBehavior>
+            <Core:DataTriggerBehavior Binding="{Binding RecivedTradeOffer}" Value="{x:Null}" ComparisonCondition="Equal" >
+                <Core:GoToStateAction StateName="NonRecived" />
+            </Core:DataTriggerBehavior>
+            <Core:DataTriggerBehavior Binding="{Binding SendedTradeOffer}" Value="{x:Null}" ComparisonCondition="NotEqual">
+                <Core:GoToStateAction StateName="SendedOffer" />
+            </Core:DataTriggerBehavior>
+            <Core:DataTriggerBehavior Binding="{Binding SendedTradeOffer}" Value="{x:Null}" ComparisonCondition="Equal">
+                <Core:GoToStateAction StateName="NonSended" />
+            </Core:DataTriggerBehavior>
+        </Interactivity:Interaction.Behaviors>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="355*"/>
+            <ColumnDefinition Width="1011*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="147*"/>
+            <RowDefinition Height="396*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Controls:StandardHeadder Title="Trade" NavigationHelper="{Binding NavigationHelper, ElementName=root}" />
+
+
+
+        <GridView x:Name="gridView1" ItemsSource="{Binding OfferedCards}" SelectionMode="None" Grid.Column="1" Grid.RowSpan="2"  ItemTemplate="{StaticResource CardTemplate}"/>
+        <GridView x:Name="gridView" ItemsSource="{Binding OwnCards.Cards}" SelectionMode="Multiple" SelectionChanged="GridView_SelectionChanged" Grid.Row="2" Grid.Column="1" ItemTemplate="{StaticResource CardTemplate}" />
+        <Button  Command="{Binding SendOfferCommand}" Content="Handel!" Grid.Row="3" Grid.Column="1" Margin="20,10,0,20"/>
+        <Grid Grid.RowSpan="3" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ListView IsDoubleTapEnabled="False"
+				IsHoldingEnabled="False"
+				IsItemClickEnabled="False"
+				IsRightTapEnabled="False"
+				IsSwipeEnabled="False"
+				IsTapEnabled="False"
+				ItemsSource="{Binding Messages}"
+				RenderTransformOrigin="0.5,0.5"
+				SelectionMode="None">
+                <ListView.RenderTransform>
+                    <CompositeTransform ScaleY="-1" />
+                </ListView.RenderTransform>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Margin" Value="0" />
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <TextBlock IsTextSelectionEnabled="True" RenderTransformOrigin="0.5,0.5">
+                            <TextBlock.RenderTransform>
+                                <CompositeTransform ScaleY="-1" />
+                            </TextBlock.RenderTransform>
+							<Run Foreground="{ThemeResource AppBarItemDisabledForegroundThemeBrush}" Text="{Binding User.Name}" />
+							<Run Text=": " />
+							<Run Text="{Binding Text}" />
+                        </TextBlock>
+
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="textBox"
+					IsSpellCheckEnabled="True"
+					KeyDown="MessageTextboxKeyDown"
+                              />
+                <Button Grid.Column="1"
+					Command="{Binding SendMessageCommand, Mode=OneWay}"
+					CommandParameter="{Binding Text, ElementName=textBox}"
+					Content="Senden" />
+            </Grid>
+        </Grid>
+
+        <Border x:Name="border" Background="White" Grid.RowSpan="100" Grid.ColumnSpan="102" HorizontalAlignment="Stretch" VerticalAlignment="Center" RequestedTheme="Light" Visibility="Collapsed">
+            <Grid Margin="10" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <ScrollViewer  Grid.ColumnSpan="2" Margin="10">
+
+                    <StackPanel >
+
+                        <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Möchten Sie Folgenden Handel Abschließen?"/>
+                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Sie geben:"/>
+                        <GridView ItemsSource="{Binding RecivedTradeOffer.CardsTaken, Converter={StaticResource TradeagreementToTradeagreementViewmodel}}" SelectionMode="None"   ItemTemplate="{StaticResource CardTemplate}">
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapGrid Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+                        </GridView>
+
+                        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Sie erhalten:"/>
+                        <GridView  ItemsSource="{Binding RecivedTradeOffer.CardsGiven, Converter={StaticResource TradeagreementToTradeagreementViewmodel}}" SelectionMode="None"   ItemTemplate="{StaticResource CardTemplate}">
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapGrid Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+                        </GridView>
+                    </StackPanel>
+                </ScrollViewer>
+                <Button Command="{Binding AcceptOfferCommand}" Content="Aktzeptieren"  Grid.Row="1"  HorizontalAlignment="Right" Margin="0,0,50,0"/>
+                <Button Command="{Binding RejectOfferCommand}" Content="Ablehnen"  Grid.Row="1" Grid.Column="1" Margin="50,0,0,0"/>
+            </Grid>
+        </Border>
+
+        <Border x:Name="border1" Background="White" Grid.ColumnSpan="10" Grid.RowSpan="100" HorizontalAlignment="Stretch" VerticalAlignment="Center" RequestedTheme="Light" Visibility="Collapsed"  >
+            <Grid Margin="10" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel  Margin="10">
+
+                    <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Angebot Gesendet"/>
+                    <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="Warte auf Antwort" Margin="0,20,0,0"/>
+                    <ProgressRing IsActive="True" Height="80" Width="80"/>
+                </StackPanel>
+                <Button Command="{Binding RejectOfferCommand}" Content="Abrechen"  Grid.Row="1"  HorizontalAlignment="Center" />
+
+            </Grid>
+        </Border>
+
+
+
+    </Grid>
+</Page>

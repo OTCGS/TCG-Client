@@ -1,0 +1,163 @@
+﻿<Page x:Class="Client.Pages.NetworkLobby"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Common="using:Client.Common.Converters"
+      xmlns:Controls="using:Client.Controls"
+      xmlns:Viewmodel="using:Client.Viewmodel"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:Client.Pages"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      x:Name="root"
+      mc:Ignorable="d">
+    <Page.Resources>
+        <Common:ByteToImageConverter x:Key="ByteToImageConverter" />
+        <Common:NullToFalseConverter x:Key="NullToFalseConverter" />
+    </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Command="{Binding PlayCommand}"
+                          Icon="Play"
+                          Label="Spielen" />
+            <AppBarButton Command="{Binding TradeCommand}"
+                          Icon="Remote"
+                          Label="Tauschen" />
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Controls:StandardHeadder Title="Lobby" NavigationHelper="{Binding NavigationHelper, ElementName=root}" />
+        <ComboBox Width="400"
+                  Margin="288,32,0,24"
+                  HorizontalAlignment="Left"
+                  Header="Spiel(-Regeln)"
+                  ItemsSource="{Binding Rulesets}"
+                  SelectedItem="{Binding SelectedRuleset,
+                                         Mode=TwoWay}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <Run Text="{Binding Name}" /><Run Text="(" /><Run Text="{Binding Revision}" /><Run Text=")" />
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="userList"
+                      ItemsSource="{Binding Users}"
+                      SelectedItem="{Binding SelectedUser,
+                                             Mode=TwoWay}"
+                      SelectionChanged="userList_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="50"
+                                   Height="50"
+                                   Margin="3"
+                                   Source="{Binding Image,
+                                                    Converter={StaticResource ByteToImageConverter}}"
+                                   Stretch="UniformToFill" />
+
+                            <TextBlock VerticalAlignment="Center"
+                                       FontSize="28"
+                                       IsTextSelectionEnabled="True"
+                                       RenderTransformOrigin="0.5,0.5"
+                                       Text="{Binding Name}"
+                                       TextTrimming="CharacterEllipsis"
+                                       TextWrapping="NoWrap" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <ListView IsDoubleTapEnabled="False"
+                          IsHoldingEnabled="False"
+                          IsItemClickEnabled="False"
+                          IsRightTapEnabled="False"
+                          IsSwipeEnabled="False"
+                          IsTapEnabled="False"
+                          ItemsSource="{Binding Messages}"
+                          RenderTransformOrigin="0.5,0.5"
+                          ScrollViewer.HorizontalScrollMode="Disabled"
+                          SelectionMode="None">
+                    <ListView.RenderTransform>
+                        <CompositeTransform ScaleY="-1" />
+                    </ListView.RenderTransform>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Margin" Value="0" />
+                            <Setter Property="Padding" Value="0" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <ContentPresenter />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid RenderTransformOrigin="0.5,0.5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RenderTransform>
+                                    <CompositeTransform ScaleY="-1" />
+                                </Grid.RenderTransform>
+                                <Image Width="50"
+                                       Height="50"
+                                       Margin="3"
+                                       Source="{Binding User.Image,
+                                                        Converter={StaticResource ByteToImageConverter}}"
+                                       Stretch="UniformToFill" />
+
+                                <TextBlock Grid.Column="1"
+                                           VerticalAlignment="Bottom"
+                                           IsTextSelectionEnabled="True"
+                                           TextWrapping="WrapWholeWords">
+
+                                    <Run Foreground="{ThemeResource AppBarItemDisabledForegroundThemeBrush}" Text="{Binding User.Name}" />
+                                    <Run Text=": " />
+                                    <Run Text="{Binding Text}" />
+                                </TextBlock>
+                            </Grid>
+
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="textBox"
+                             IsSpellCheckEnabled="True"
+                             KeyDown="MessageTextboxKeyDown"
+                             Text="{Binding MessageToSend,
+                                            Mode=TwoWay}" />
+                    <Button Grid.Column="1"
+                            Command="{Binding SendMessageCommand,
+                                              Mode=OneWay}"
+                            CommandParameter="{Binding Text,
+                                                       ElementName=textBox}"
+                            Content="Senden" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

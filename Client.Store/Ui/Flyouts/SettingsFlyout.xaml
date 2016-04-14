@@ -1,0 +1,125 @@
+﻿<SettingsFlyout x:Class="Client.Store.Flyouts.SettingsFlyoutMain"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:Viewmodel="using:Client.Store.Viewmodel"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:local="using:Client.Store.Flyouts"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                Title="SettingsFlyout"
+                IconSource="Assets/SmallLogo.png"
+                d:DesignWidth="346"
+                mc:Ignorable="d">
+
+    <!--  Dieser StackPanel fungiert als vertikales Layout der Inhaltsabschnitte  -->
+    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+        <!--  Die StackPanels unten definieren individuelle Inhaltsabschnitte  -->
+
+        <StackPanel IsDoubleTapEnabled="False"
+                    IsHoldingEnabled="False"
+                    IsRightTapEnabled="False"
+                    IsTapEnabled="False"
+                    Style="{StaticResource SettingsFlyoutSectionStyle}">
+
+            <StackPanel.DataContext>
+                <Viewmodel:CentralViewmodel />
+            </StackPanel.DataContext>
+
+            <!--  Abschnitt 1 Header  -->
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Server" />
+
+            <ItemsControl Name="ServerList" ItemsSource="{Binding Instance.Serveraddresses}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="1"
+                                    HorizontalAlignment="Right"
+                                    Command="{Binding Tag.Instance.RemoveServerCommand,
+                                                      RelativeSource={RelativeSource Mode=Self}}"
+                                    CommandParameter="{Binding}"
+                                    Content="X">
+                                <Button.Tag>
+                                    <Viewmodel:CentralViewmodel />
+                                </Button.Tag>
+                            </Button>
+                            <TextBlock Text="{Binding}" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <TextBox Name="AddServerTextBox" Margin="0,5,0,5" />
+            <Button Margin="0,0,0,25"
+                    Command="{Binding Instance.AddServerCommand,
+                                      Mode=OneWay}"
+                    CommandParameter="{Binding Text,
+                                               ElementName=AddServerTextBox}"
+                    Content="Server Hinzufügen" />
+            <!--  Abschnitt 1 Textkörper  -->
+            <TextBlock Margin="0,0,0,25"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       TextWrapping="Wrap">
+                <TextBlock.Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</TextBlock.Text>
+            </TextBlock>
+
+            <!--  Abschnitt 2 Header  -->
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Vertrauenswürdige Server" />
+
+            <ItemsControl Name="TrustedCertificateList" ItemsSource="{Binding Instance.TrustedCertificates}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="1"
+                                    HorizontalAlignment="Right"
+                                    Command="{Binding Tag.Instance.RemoveTrustedCertificateCommand,
+                                                      RelativeSource={RelativeSource Mode=Self}}"
+                                    CommandParameter="{Binding}"
+                                    Content="X">
+                                <Button.Tag>
+                                    <Viewmodel:CentralViewmodel />
+                                </Button.Tag>
+                            </Button>
+                            <TextBlock Text="{Binding CertificateId}" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <TextBox Name="AddTrustedCertificateTextBox" Margin="0,5,0,5" />
+            <Button Margin="0,0,0,25"
+                    Command="{Binding Instance.AddTrustedCertificateCommand,
+                                      Mode=OneWay}"
+                    CommandParameter="{Binding Text,
+                                               ElementName=AddTrustedCertificateTextBox}"
+                    Content="Server Hinzufügen" />
+
+            <!--  Abschnitt 2 Textkörper  -->
+            <TextBlock Margin="0,0,0,25"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       TextWrapping="Wrap">
+                <TextBlock.Text>Stellt die Vertraunswürdigen Server da. Es ist wichtig den Servern zu vertrauen dessen Karten man besitzt</TextBlock.Text>
+            </TextBlock>
+
+            <!--  Abschnitt 3 Header  -->
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Lokal Gespeicherte Accounts" />
+
+            <Button Margin="0,0,0,25"
+                    Command="{Binding Instance.ClearLocalAccountsCommand,
+                                      Mode=OneWay}"
+                    Content="Lokale Accounts Löschen" />
+            <!--  Abschnitt 3 Textkörper  -->
+            <TextBlock Margin="0,0,0,25"
+                       Style="{StaticResource BodyTextBlockStyle}"
+                       TextWrapping="Wrap">
+                <TextBlock.Text>Stellt die Vertraunswürdigen Server da. Es ist wichtig den Servern zu vertrauen dessen Karten man besitzt</TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
+        <!--  Weitere Inhaltsabschnitte nach Bedarf definieren  -->
+    </StackPanel>
+</SettingsFlyout>

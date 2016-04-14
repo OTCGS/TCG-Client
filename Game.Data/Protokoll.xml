@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root xmlns="http://tempuri.org/Definition.xsd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://tempuri.org/Definition.xsd Definition.xsd">
+
+  <Type Name="PublicKey">
+    <Property Name="Modulus" Type="bytes"/>
+    <Property Name="Exponent" Type="bytes"/>
+  </Type>
+
+  <Enum Name="WhoIsOdd">
+    <Value>MeOdd</Value>
+    <Value>YouOdd</Value>
+  </Enum>
+
+  <Enum Name="DoWeGoOn">
+    <Value>GoOn</Value>
+    <Value>Abort</Value>
+  </Enum>
+
+
+  <Enum Name="PlayerNumber">
+    <Value>None</Value>
+    <Value>Player1</Value>
+    <Value>Player2</Value>
+    <Value>Any</Value>
+  </Enum>
+  <!-- Mit TOBI GESYNCT-->
+  <Type Name="CardInstance">
+    <Property Name="Id" Type="uuid" />
+    <Property Name="CardDataId" Type="uuid" />
+    <Property Name="Creator" Type="PublicKey"/>
+    <Property Name="Signature" Type="bytes"/>
+  </Type>
+
+  <Type Name="Ruleset ">
+    <Property Name="Id" Type="uuid"/>
+    <Property Name="Creator" Type="PublicKey"/>
+    <Property Name="Name" Type="string"/>
+    <Property Name="Revision" Type="int32"/>
+    <Property Name="Script" Type="string"/>
+    <Property Name="MandatoryKeys" Type="Keys" IsList="true"/>
+    <Property Name="Signature" Type="bytes"/>
+  </Type>
+  
+  
+  
+  <Type Name="Keys">
+    <Property Name="Name" Type="string"/>
+    <Property Name="Type" Type="string"/>
+  </Type>
+  
+  <Type Name="CardData">
+    <Property Name="Id" Type="uuid" />
+    <Property Name="Creator" Type="PublicKey"/>
+    <Property Name="Edition" Type="string" />
+    <Property Name="CardRevision" Type="int32" />
+    <Property Name="ImageId" Type="uuid" />
+    <Property Name="Name" Type="string" />
+    <Property Name="Values" Type="KeyValue" IsList="true" />
+    <Property Name="Signature" Type="bytes"/>
+  </Type>
+
+  <Type Name="ImageData">
+    <Property Name="Id" Type="uuid" />
+    <Property Name="Image" Type="bytes" />
+    <Property Name="Creator" Type="PublicKey"/>
+    <Property Name="Signatur" Type="bytes"/>
+  </Type>
+
+  <Type Name="KeyValue">
+    <Property Name="Key" Type="string" />
+    <Property Name="Value" Type="string" />
+  </Type>
+
+  <Type Name="ServerId">
+    <Property Name="Name" Type="string"/>
+    <Property Name="Key" Type="PublicKey"/>
+    <Property Name="Icon" Type="uuid"/>
+    <Property Name="Uri" Type="string"/>
+    <Property Name="Revision" Type="int32"/>
+    <Property Name="Signiture" Type="bytes"/>
+  </Type>
+  <!-- Mit ENDE TOBI GESYNCT-->
+
+
+  <!-- Messages für den TradingConnection-->
+
+  <Type Name="TradeOffer">
+    <Property Name="Cards" Type="UuidServer" IsList="true"/>
+  </Type>
+
+  <Type Name="TradeMessage">
+    <Property Name="Text" Type="string"/>
+  </Type>
+
+  <Type Name="TradeAgreement">
+    <Property Name="CardsGiven" Type="CardInstance" IsList="true"/>
+    <Property Name="CardsTaken" Type="CardInstance" IsList="true"/>
+  </Type>
+
+  <Type Name="TradeReject">
+    <Property Name="CardsGiven" Type="CardInstance" IsList="true"/>
+    <Property Name="CardsTaken" Type="CardInstance" IsList="true"/>    
+  </Type>
+  
+  <Type Name="TradeSigning">
+    <Property Name="Signiture" Type="bytes"/>
+  </Type>
+  
+  <Type Name="TradeExit" />
+  
+  <!-- ENDE Messages für den TradingConnection-->
+
+
+  <!-- Messages für den InformationBrokerConnection des DDR-->
+
+  <Type Name="AskResource">
+    <Property Name="Id" Type="UuidServer"/>
+    <Property Name="Type" Type="ResourceType"/>
+  </Type>
+
+  <Type Name="ResourceNotAvailable">
+    <Property Name="Id" Type="UuidServer"/>
+    <Property Name="Type" Type="ResourceType"/>
+  </Type>
+
+  <Enum Name="ResourceType">
+    <Value>ImageData</Value>
+    <Value>CardData</Value>
+    <Value>CardInstance</Value>
+    <Value>Rules</Value>
+  </Enum>
+
+  <!-- ENDE Messages für den InformationBrokerConnection des DDR-->
+
+  <!-- Messages Zum Mergen -->
+
+  <Type Name="MergeDataCall">
+    <Property Name="Data" Type="bytes"/>
+    <Property Name="Index" Type="uint32"/>
+  </Type>
+
+  <Type Name="MergeDataReturn">
+    <Property Name="Data" Type="bytes"/>
+    <Property Name="Index" Type="uint32"/>
+  </Type>
+
+  <Type Name="MergeDataOtherFinished"/>
+
+
+
+  <!-- ENDE Messages Zum Mergen -->
+
+  <Type Name="UuidServer">
+    <Property Name="Uuid" Type="uuid"/>
+    <Property Name="Server" Type="PublicKey"/>
+  </Type>
+
+
+
+  <Type Name="InitData">
+    <Property Name="Deck" IsList="true" Type="CardInstance" />
+    <Property Name="GameKey" Type="string" />
+  </Type>
+
+  <Type Name="Prove">
+    <Property Name="Data" Type="string" />
+  </Type>
+
+  <Enum Name="Confirmation">
+    <Value>Ok</Value>
+    <Value>Error</Value>
+  </Enum>
+
+  <Type Name="CardPosition">
+    <Property Name="Player" Type="PlayerNumber" />
+    <Property Name="Region" Type="string" />
+    <Property Name="Index" Type="int32" />
+  </Type>
+
+  <Type Name="CardSecret">
+    <Property Name="Card" Type="CardPosition" />
+    <Property Name="Secret" Type="string" />
+  </Type>
+
+  <Type Name="AddedCard">
+    <Property Name="Position"  Type="CardPosition" />
+    <Property Name="CardNumber" Type="int32" />
+  </Type>
+
+  <!-- Gamemessages -->
+
+  <Type Name="ShowMessage">
+    <Property Name="Message" Type="string"  />
+  </Type>
+
+  <Type Name="ChangeText">
+    <Property Name="Text" Type="string"  />
+  </Type>
+
+
+  <Type Name="AddCards">
+    <Property Name="CardsToAdd" Type="AddedCard" IsList ="true" />
+  </Type>
+
+  <Type Name="RemoveCards">
+    <Property Name="Position"  Type="CardPosition" IsList="true" />
+  </Type>
+
+  <Type Name="ShowCardsToPlayer">
+    <Property Name="Cards" Type="CardPosition" IsList="true" />
+    <Property Name="PlayerToShow" Type="PlayerNumber" />
+  </Type>
+
+  <Type Name="SendSecrets">
+    <Property Name="CardSecrets" Type="CardSecret" IsList="true" />
+  </Type>
+
+  <Type Name="ShuffleStack">
+    <Property Name="Player" Type="PlayerNumber" />
+    <Property Name="Region" Type="string" />
+  </Type>
+
+  <Type Name="PermutateStack">
+    <Property Name="Player" Type="PlayerNumber" />
+    <Property Name="Region" Type="string" />
+    <Property Name="PermutatedSteak" Type="string" />
+  </Type>
+
+  <Type Name="MoveCard">
+    <Property Name="From" Type="CardPosition" IsList="true" />
+    <Property Name="To" Type="CardPosition" IsList="true" />
+  </Type>
+
+  <Type Name="GenerateRandomNumber">
+    <Property Name="HashedNumber" Type="bytes" />
+  </Type>
+
+  <Type Name="RandomNumber">
+    <Property Name="Value" Type="uint32" />
+  </Type>
+
+  <Type Name="SetNumber">
+    <Property Name="Name" Type="string" />
+    <Property Name="Value" Type="int32" />
+  </Type>
+
+  <Type Name="SetString">
+    <Property Name="Name" Type="string" />
+    <Property Name="Value" Type="string" />
+  </Type>
+
+  <Type Name="TurnEnd" />
+</Root>

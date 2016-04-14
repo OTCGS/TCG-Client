@@ -1,0 +1,155 @@
+﻿<Page x:Class="Client.Pages.LogIn"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Converters="using:Client.Common.Converters"
+      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:Viewmodel="using:Client.Viewmodel"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:Client.Pages"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Page.DataContext>
+        <Viewmodel:LoginViewmodel />
+    </Page.DataContext>
+    <Page.Resources>
+        <Converters:ByteToImageConverter x:Key="ImageConverter" />
+        <Converters:PublicKeyToFingerprintConverter x:Key="Fingerprint" />
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Std">
+                <VisualState x:Name="Loading">
+
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="passwordBox" Storyboard.TargetProperty="(Control.IsEnabled)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Boolean>False</x:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="button" Storyboard.TargetProperty="(Control.IsEnabled)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Boolean>False</x:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="progressRing" Storyboard.TargetProperty="(UIElement.Visibility)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Visible</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="progressRing" Storyboard.TargetProperty="(ProgressRing.IsActive)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Boolean>True</x:Boolean>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+
+                </VisualState>
+                <VisualState x:Name="NotLoading" />
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Grid.RowSpan="2"
+                MaxWidth="500"
+                MaxHeight="150"
+                Background="#CC252525"
+                Padding="20">
+            <Border.Transitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition IsStaggeringEnabled="True" />
+                </TransitionCollection>
+
+
+            </Border.Transitions>
+
+            <Grid>
+                <Interactivity:Interaction.Behaviors>
+                    <Core:DataTriggerBehavior Binding="{Binding IsLoading}" Value="True">
+                        <Core:GoToStateAction StateName="Loading" />
+                    </Core:DataTriggerBehavior>
+                    <Core:DataTriggerBehavior Binding="{Binding IsLoading}" Value="False">
+                        <Core:GoToStateAction StateName="NotLoading" />
+                    </Core:DataTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <PasswordBox x:Name="passwordBox"
+                             KeyDown="passwordBox_KeyDown"
+                             Password="{Binding Password,
+                                                Mode=TwoWay}"
+                             PlaceholderText="Password" />
+
+                <ProgressRing x:Name="progressRing"
+                              Grid.RowSpan="3"
+                              Width="60"
+                              Height="60"
+                              Visibility="Collapsed" />
+                <Button x:Name="button"
+                        Grid.Row="2"
+                        HorizontalAlignment="Right"
+                        Command="{Binding LoginCommand}"
+                        Content="Log In" />
+
+            </Grid>
+        </Border>
+
+
+        <Border Grid.RowSpan="2"
+                Grid.Column="1"
+                MaxWidth="500"
+                MaxHeight="150"
+                Background="#CC252525"
+                Padding="20">
+            <Border.Transitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition IsStaggeringEnabled="True" />
+                </TransitionCollection>
+
+
+            </Border.Transitions>
+
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="{ThemeResource SystemControlForegroundAccentBrush}"
+                        BorderThickness="1"
+                        Padding="1">
+                    <Image MaxWidth="120"
+                           MaxHeight="120"
+                           Source="{Binding UserData.Image,
+                                            Converter={StaticResource ImageConverter}}"
+                           Stretch="UniformToFill" />
+                </Border>
+                <StackPanel Margin="5,0,0,0" VerticalAlignment="Center">
+                    <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Text="{Binding UserData.UserName}" />
+                    <TextBlock Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                               Text="{Binding UserData.UserID,
+                                              Converter={StaticResource Fingerprint}}"
+                               TextWrapping="Wrap" />
+                </StackPanel>
+
+
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

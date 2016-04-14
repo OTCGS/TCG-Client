@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>3bbfe19c-b55b-4552-a9ef-faad8cf761af</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Network.Socket</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)EndPoint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IDatagramSocket.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IMessageHeadder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IMulticastSuportedDatagramSocket.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IStreamSocket.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ReliableDatagrammSocket.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SocketFactory.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F7E53C6E-C0CE-4C17-BC44-26C642FFCC7D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>System.Xml.XmlDocument</RootNamespace>
+    <AssemblyName>System.Xml.XmlDocument</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile151</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Native|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Native\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Native|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug Native\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Native|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug Native\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Native|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug Native\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <EmbeddedResource Include="Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings1.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Strings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="System\ArrayT.cs" />
+    <Compile Include="System\NotImplemented.cs" />
+    <Compile Include="System\SR.cs" />
+    <Compile Include="System\Xml\Base64Decoder.cs" />
+    <Compile Include="System\Xml\Base64Encoder.cs" />
+    <Compile Include="System\Xml\BinHexDecoder.cs" />
+    <Compile Include="System\Xml\BinHexEncoder.cs" />
+    <Compile Include="System\Xml\Bits.cs" />
+    <Compile Include="System\Xml\Cache\XPathDocumentBuilder.cs" />
+    <Compile Include="System\Xml\Cache\XPathDocumentIterator.cs" />
+    <Compile Include="System\Xml\Cache\XPathDocumentNavigator.cs" />
+    <Compile Include="System\Xml\Cache\XPathNode.cs" />
+    <Compile Include="System\Xml\Cache\XPathNodeHelper.cs" />
+    <Compile Include="System\Xml\Cache\XPathNodeInfoAtom.cs" />
+    <Compile Include="System\Xml\Dom\DomNameTable.cs" />
+    <Compile Include="System\Xml\Dom\XmlAttribute.cs" />
+    <Compile Include="System\Xml\Dom\XmlAttributeCollection.cs" />
+    <Compile Include="System\Xml\Dom\XmlCDATASection.cs" />
+    <Compile Include="System\Xml\Dom\XmlCharacterData.cs" />
+    <Compile Include="System\Xml\Dom\XmlChildEnumerator.cs" />
+    <Compile Include="System\Xml\Dom\XmlChildNodes.cs" />
+    <Compile Include="System\Xml\Dom\XmlComment.cs" />
+    <Compile Include="System\Xml\Dom\XmlDeclaration.cs" />
+    <Compile Include="System\Xml\Dom\XmlDocument.cs" />
+    <Compile Include="System\Xml\Dom\XmlDocumentFragment.cs" />
+    <Compile Include="System\Xml\Dom\XmlDocumentType.cs" />
+    <Compile Include="System\Xml\Dom\XmlDomTextWriter.cs" />
+    <Compile Include="System\Xml\Dom\XmlElement.cs" />
+    <Compile Include="System\Xml\Dom\XmlElementList.cs" />
+    <Compile Include="System\Xml\Dom\XmlEntity.cs" />
+    <Compile Include="System\Xml\Dom\XmlEntityReference.cs" />
+    <Compile Include="System\Xml\Dom\XmlEventChangedAction.cs" />
+    <Compile Include="System\Xml\Dom\XmlImplementation.cs" />
+    <Compile Include="System\Xml\Dom\XmlLinkedNode.cs" />
+    <Compile Include="System\Xml\Dom\XmlLoader.cs" />
+    <Compile Include="System\Xml\Dom\XmlName.cs" />
+    <Compile Include="System\Xml\Dom\XmlNamedNodeMap.cs" />
+    <Compile Include="System\Xml\Dom\XmlNamedNodeMap.SmallXmlNodeList.cs" />
+    <Compile Include="System\Xml\Dom\XmlNode.cs" />
+    <Compile Include="System\Xml\Dom\XmlNodeChangedEventArgs.cs" />
+    <Compile Include="System\Xml\Dom\XmlNodeChangedEventHandler.cs" />
+    <Compile Include="System\Xml\Dom\XmlNodeList.cs" />
+    <Compile Include="System\Xml\Dom\XmlProcessingInstruction.cs" />
+    <Compile Include="System\Xml\Dom\XmlSignificantWhitespace.cs" />
+    <Compile Include="System\Xml\Dom\XmlText.cs" />
+    <Compile Include="System\Xml\Dom\XmlUnspecifiedAttribute.cs" />
+    <Compile Include="System\Xml\Dom\XmlWhitespace.cs" />
+    <Compile Include="System\Xml\EmptyEnumerator.cs" />
+    <Compile Include="System\Xml\ExceptionType.cs" />
+    <Compile Include="System\Xml\IncrementalReadDecoders.cs" />
+    <Compile Include="System\Xml\ReadContentAsBinaryHelper.cs" />
+    <Compile Include="System\Xml\Ref.cs" />
+    <Compile Include="System\Xml\Schema\XmlUntypedConverter.cs" />
+    <Compile Include="System\Xml\Schema\XsdDateTime.cs" />
+    <Compile Include="System\Xml\SecureStringHasher.cs" />
+    <Compile Include="System\Xml\ValidateNames.cs" />
+    <Compile Include="System\Xml\XmlAttributeCollectionEx.cs" />
+    <Compile Include="System\Xml\XmlAttributeEx.cs" />
+    <Compile Include="System\Xml\XmlCharType.cs" />
+    <Compile Include="System\Xml\XmlConst.cs" />
+    <Compile Include="System\Xml\XmlConvertEx.cs" />
+    <Compile Include="System\Xml\XmlDocumentEx.cs" />
+    <Compile Include="System\Xml\XmlNameHelper.cs" />
+    <Compile Include="System\Xml\XmlNodeEx.cs" />
+    <Compile Include="System\Xml\XmlNodeOrder.cs" />
+    <Compile Include="System\Xml\XmlParsingHelper.cs" />
+    <Compile Include="System\Xml\XmlRawWriter.cs" />
+    <Compile Include="System\Xml\XmlRawWriterBase64Encoder.cs" />
+    <Compile Include="System\Xml\XmlReaderExtensions.cs" />
+    <Compile Include="System\Xml\XmlStandalone.cs" />
+    <Compile Include="System\Xml\XmlTextEncoder.cs" />
+    <Compile Include="System\Xml\XmlTextWriter.cs" />
+    <Compile Include="System\Xml\XmlTextWriterBase64Encoder.cs" />
+    <Compile Include="System\Xml\XmlWellformedWriter.cs" />
+    <Compile Include="System\Xml\XmlWellformedWriterHelpers.cs" />
+    <Compile Include="System\Xml\XmlWriterExtensions.cs" />
+    <Compile Include="System\Xml\XPathNavigatorEx.cs" />
+    <Compile Include="System\Xml\XPath\DocumentXmlWriter.cs" />
+    <Compile Include="System\Xml\XPath\DocumentXPathNavigator.cs" />
+    <Compile Include="System\Xml\XPath\Internal\AbsoluteQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\AstNode.cs" />
+    <Compile Include="System\Xml\XPath\Internal\AttributeQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\Axis.cs" />
+    <Compile Include="System\Xml\XPath\Internal\BaseAxisQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\BooleanExpr.cs" />
+    <Compile Include="System\Xml\XPath\Internal\BooleanFunctions.cs" />
+    <Compile Include="System\Xml\XPath\Internal\CacheAxisQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\CacheChildrenQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\CacheOutputQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\ChildrenQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\ClonableStack.cs" />
+    <Compile Include="System\Xml\XPath\Internal\CompiledXpathExpr.cs" />
+    <Compile Include="System\Xml\XPath\Internal\ContextQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\DescendantBaseQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\DescendantOverDescendantQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\DescendantQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\DocumentOrderQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\EmptyQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\ExtensionQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\Filter.cs" />
+    <Compile Include="System\Xml\XPath\Internal\FilterQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\FollowingQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\FollSiblingQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\ForwardPositionQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\Function.cs" />
+    <Compile Include="System\Xml\XPath\Internal\FunctionQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\Group.cs" />
+    <Compile Include="System\Xml\XPath\Internal\GroupQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\IDQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\IteratorFilter.cs" />
+    <Compile Include="System\Xml\XPath\Internal\LogicalExpr.cs" />
+    <Compile Include="System\Xml\XPath\Internal\MergeFilterQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\NamespaceQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\NodeFunctions.cs" />
+    <Compile Include="System\Xml\XPath\Internal\NumberFunctions.cs" />
+    <Compile Include="System\Xml\XPath\Internal\NumericExpr.cs" />
+    <Compile Include="System\Xml\XPath\Internal\Operand.cs" />
+    <Compile Include="System\Xml\XPath\Internal\OperandQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\Operator.cs" />
+    <Compile Include="System\Xml\XPath\Internal\ParentQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\PrecedingQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\PreSiblingQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\Query.cs" />
+    <Compile Include="System\Xml\XPath\Internal\QueryBuilder.cs" />
+    <Compile Include="System\Xml\XPath\Internal\ResetableIterator.cs" />
+    <Compile Include="System\Xml\XPath\Internal\ReversePositionQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\Root.cs" />
+    <Compile Include="System\Xml\XPath\Internal\SortQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\StringFunctions.cs" />
+    <Compile Include="System\Xml\XPath\Internal\UnionExpr.cs" />
+    <Compile Include="System\Xml\XPath\Internal\ValueQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\Variable.cs" />
+    <Compile Include="System\Xml\XPath\Internal\VariableQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\XPathAncestorIterator.cs" />
+    <Compile Include="System\Xml\XPath\Internal\XPathAncestorQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\XPathArrayIterator.cs" />
+    <Compile Include="System\Xml\XPath\Internal\XPathAxisIterator.cs" />
+    <Compile Include="System\Xml\XPath\Internal\XPathChildIterator.cs" />
+    <Compile Include="System\Xml\XPath\Internal\XPathDescendantIterator.cs" />
+    <Compile Include="System\Xml\XPath\Internal\XPathEmptyIterator.cs" />
+    <Compile Include="System\Xml\XPath\Internal\XPathParser.cs" />
+    <Compile Include="System\Xml\XPath\Internal\XPathScanner.cs" />
+    <Compile Include="System\Xml\XPath\Internal\XPathSelectionIterator.cs" />
+    <Compile Include="System\Xml\XPath\Internal\XPathSelfQuery.cs" />
+    <Compile Include="System\Xml\XPath\Internal\XPathSingletonIterator.cs" />
+    <Compile Include="System\Xml\XPath\IXPathNavigable.cs" />
+    <Compile Include="System\Xml\XPath\XmlDocumentExtensions.cs" />
+    <Compile Include="System\Xml\XPath\XPathCompileTest.cs" />
+    <Compile Include="System\Xml\XPath\XPathDocument.cs" />
+    <Compile Include="System\Xml\XPath\XPathException.cs" />
+    <Compile Include="System\Xml\XPath\XPathExpr.cs" />
+    <Compile Include="System\Xml\XPath\XPathItem.cs" />
+    <Compile Include="System\Xml\XPath\XPathNamespaceScope.cs" />
+    <Compile Include="System\Xml\XPath\XPathNavigator.cs" />
+    <Compile Include="System\Xml\XPath\XPathNavigatorKeyComparer.cs" />
+    <Compile Include="System\Xml\XPath\XPathNavigatorReader.cs" />
+    <Compile Include="System\Xml\XPath\XPathNodeIterator.cs" />
+    <Compile Include="System\Xml\XPath\XPathNodeList.cs" />
+    <Compile Include="System\Xml\XPath\XPathNodeType.cs" />
+    <Compile Include="System\Xml\Xsl\XsltContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{e66620b2-02ab-41d6-89bf-3461cfbbd446}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
